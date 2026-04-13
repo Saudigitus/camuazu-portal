@@ -2,7 +2,7 @@
   "name": "centro-medico-camuazu",
   "private": true,
   "version": "1.0.0",
-  "homepage": "./",
+  "homepage": "https://saudigitus.github.io/camuazu-portal/",
   "type": "module",
   "scripts": {
     "dev": "vite",
