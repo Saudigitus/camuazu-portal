@@ -30,6 +30,7 @@ export default defineConfig({
     tailwindcss(),
     figmaAssetPlugin(),
   ],
+  base: '/camuazu-portal',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
