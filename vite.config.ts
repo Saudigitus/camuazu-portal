@@ -1,16 +1,9 @@
 import { defineConfig } from 'vite'
 import path from 'path'
+import fs from 'fs'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
-/**
- * figmaAssetPlugin — resolves virtual "figma:asset/FILENAME" imports
- * to actual files inside /src/assets/.
- *
- * Place every image referenced in the code into /src/assets/
- * using the exact filename shown in each import.
- * See /src/assets/IMAGES.md for the full list.
- */
 function figmaAssetPlugin() {
   const prefix = 'figma:asset/'
   return {
@@ -20,6 +13,16 @@ function figmaAssetPlugin() {
         const filename = id.slice(prefix.length)
         return path.resolve(__dirname, 'src/assets', filename)
       }
+    },
+    load(id: string) {
+      if (!id.startsWith(prefix)) return null
+      const source = fs.readFileSync(id)
+      const refId = this.emitFile({
+        type: 'asset',
+        name: path.basename(id),
+        source,
+      })
+      return `export default import.meta.ROLLUP_FILE_ASSET_REFERENCE_URL_${refId}`
     },
   }
 }
