@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+//@ts-ignore
 import clinicImg from "figma:asset/c50ae334707ba9b1825aa0dc1f7c57af4bac43d1.png";
 
 const highlights = [

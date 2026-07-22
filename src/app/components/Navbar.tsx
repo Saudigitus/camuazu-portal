@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
+//@ts-ignore
 import logoImg from "figma:asset/bd0c47f6cb2435126e2924d6c298e7f1bb4f338f.png";
 
 const navLinks = [

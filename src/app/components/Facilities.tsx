@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";

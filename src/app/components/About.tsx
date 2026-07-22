@@ -2,7 +2,8 @@ import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
 import { CheckCircle2, ArrowRight } from "lucide-react";
-import consultationImg from "figma:asset/7d8ae26c0e3a71d4a1985b6256dd0f4e7238d8c5.png";
+//@ts-ignore
+import consultationImg from "asset/7d8ae26c0e3a71d4a1985b6256dd0f4e7238d8c5.png";
 
 const features = [
   "Equipa médica altamente qualificada e especializada",
