@@ -57,7 +57,7 @@ export function Navbar() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:flex items-center gap-2">
+          {/* <div className="hidden md:flex items-center gap-2">
             <a
               href="tel:849823400"
               className="flex items-center gap-2 bg-[#E02020] hover:bg-[#c01818] text-white px-5 py-2.5 rounded-full text-sm transition-all duration-200 shadow-md hover:shadow-lg"
@@ -65,7 +65,7 @@ export function Navbar() {
               <Phone size={15} />
               Marcar Consulta
             </a>
-          </div>
+          </div> */}
 
           {/* Mobile Hamburger */}
           <button
