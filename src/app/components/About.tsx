@@ -45,7 +45,7 @@ export function About() {
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative order-2 lg:order-1"
           >
             <div className="grid grid-cols-2 gap-4">
               {gallery.map((item, i) => {
@@ -104,6 +104,7 @@ export function About() {
             initial={{ opacity: 0, x: 50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
+            className="order-1 lg:order-2"
           >
             <h2 className="text-gray-900 mb-6" style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 800, lineHeight: 1.2 }}>
               Sobre nós
