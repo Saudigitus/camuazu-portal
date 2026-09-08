@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router";
 import { Menu, X, Phone } from "lucide-react";
 //@ts-ignore
 import logoImg from "@/assets/logo.png";
 
 const navLinks = [
-  { label: "Início", href: "#hero" },
-  { label: "Sobre Nós", href: "#about" },
-  { label: "Serviços", href: "#services" },
-  // { label: "Instalações", href: "#facilities" },
-  { label: "Contacto", href: "#contact" },
+  { label: "Início", href: "#hero", type: "scroll" },
+  { label: "Sobre Nós", href: "#about", type: "scroll" },
+  { label: "Serviços", href: "/servicos", type: "page" },
+  { label: "Contacto", href: "#contact", type: "scroll" },
 ];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -21,10 +23,22 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNav = (href: string) => {
+  const handleNav = (href: string, type: string) => {
     setMenuOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (type === "page") {
+      navigate(href);
+    } else {
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          const el = document.querySelector(href);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      } else {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   };
 
   return (
@@ -38,7 +52,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => handleNav("#hero")}>
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => handleNav("#hero", "scroll")}>
             <img src={logoImg} alt="Centro Médico Camuazu" className="h-16 w-auto object-contain" />
           </div>
 
@@ -47,7 +61,7 @@ export function Navbar() {
             {navLinks.map((link) => (
               <button
                 key={link.href}
-                onClick={() => handleNav(link.href)}
+                onClick={() => handleNav(link.href, link.type)}
                 className={`text-sm tracking-wide transition-colors duration-200 hover:text-[#1BAFD6] ${
                   scrolled ? "text-gray-700" : "text-white"
                 }`}
@@ -56,17 +70,6 @@ export function Navbar() {
               </button>
             ))}
           </div>
-
-          {/* CTA Button */}
-          {/* <div className="hidden md:flex items-center gap-2">
-            <a
-              href="tel:849823400"
-              className="flex items-center gap-2 bg-[#E02020] hover:bg-[#c01818] text-white px-5 py-2.5 rounded-full text-sm transition-all duration-200 shadow-md hover:shadow-lg"
-            >
-              <Phone size={15} />
-              Marcar Consulta
-            </a>
-          </div> */}
 
           {/* Mobile Hamburger */}
           <button
@@ -90,7 +93,7 @@ export function Navbar() {
           {navLinks.map((link) => (
             <button
               key={link.href}
-              onClick={() => handleNav(link.href)}
+              onClick={() => handleNav(link.href, link.type)}
               className="text-gray-700 text-left px-4 py-3 rounded-lg hover:bg-[#1BAFD6]/10 hover:text-[#1BAFD6] transition-colors text-sm"
             >
               {link.label}
