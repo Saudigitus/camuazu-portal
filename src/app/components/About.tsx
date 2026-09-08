@@ -10,14 +10,12 @@ import internamentoImg from "@/assets/internamento.png";
 import esperaImg from "@/assets/espera.png";
 //@ts-ignore
 import consultorioImg from "@/assets/consultorio.png";
-//@ts-ignore
-import exteriorImg from "@/assets/exterior.png";
 
 const gallery = [
-  { img: internamentoImg, alt: "Sala de Internamento", span: "col-span-1 row-span-1" },
-  { img: esperaImg, alt: "Sala de Espera", span: "col-span-1 row-span-1" },
-  { img: consultorioImg, alt: "Consultório Médico", span: "col-span-1 row-span-1" },
-  { img: exteriorImg, alt: "Exterior da Clínica", span: "col-span-1 row-span-1" },
+  { img: consultaImg, alt: "Consulta médica" },
+  { img: internamentoImg, alt: "Sala de Internamento" },
+  { img: consultorioImg, alt: "Consultório Médico" },
+  { img: esperaImg, alt: "Sala de Espera" },
 ];
 
 const features = [
@@ -42,17 +40,71 @@ export function About() {
     <section id="about" className="py-24 bg-gray-50 overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Image Side - Gallery */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
+            <div className="grid grid-cols-2 gap-4">
+              {gallery.map((item, i) => {
+                const gridClass =
+                  i === 0
+                    ? "md:col-start-1 md:row-start-1 md:row-span-2"
+                    : i === 1
+                    ? "md:col-start-2 md:row-start-1"
+                    : i === 2
+                    ? "md:col-start-2 md:row-start-2 md:row-span-2"
+                    : "md:col-start-1 md:row-start-3";
+
+                const cardStyle =
+                  i === 0
+                    ? { minHeight: "320px" }
+                    : i === 2
+                    ? { minHeight: "100%" }
+                    : { height: "155px", minHeight: "155px" };
+
+                return (
+                  <motion.div
+                    key={item.alt}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={inView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+                    className={`relative group overflow-hidden rounded-sm ${gridClass}`}
+                    style={cardStyle}
+                  >
+                    <img
+                      src={item.img}
+                      alt={item.alt}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#03224C]/70 via-[#03224C]/10 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <span className="text-white text-sm font-semibold">{item.alt}</span>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Floating badge */}
+            {/* <div className="absolute -bottom-5 -right-5 bg-[#E02020] text-white rounded-2xl p-4 shadow-xl z-10">
+              <div className="text-[10px] text-white/80">Desde</div>
+              <div className="text-2xl" style={{ fontWeight: 800 }}>2024</div>
+              <div className="text-[10px] text-white/80">ao serviço da comunidade</div>
+            </div> */}
+
+            {/* Decorative element */}
+            <div className="absolute -top-6 -left-6 w-24 h-24 rounded-2xl bg-[#1BAFD6]/10 -z-10" />
+          </motion.div>
+
           {/* Content Side */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* <div className="inline-flex items-center gap-2 bg-[#E02020]/10 text-[#E02020] px-4 py-2 rounded-full text-sm mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#E02020]" />
-              Sobre o Centro Médico Camuazu
-            </div> */}
-
             <h2 className="text-gray-900 mb-6" style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 800, lineHeight: 1.2 }}>
               Sobre nós
             </h2>
@@ -88,46 +140,6 @@ export function About() {
               Saber Mais
               <ArrowRight size={16} />
             </button>
-          </motion.div>
-
-          {/* Image Side - Gallery */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
-            <div className="grid grid-cols-2 gap-3 rounded-3xl overflow-hidden">
-              {gallery.map((item, i) => (
-                <motion.div
-                  key={item.alt}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-                  className={`relative group overflow-hidden rounded-2xl ${item.span}`}
-                >
-                  <img
-                    src={item.img}
-                    alt={item.alt}
-                    className="w-full h-full object-cover min-h-[140px] transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#03224C]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <span className="text-white text-xs font-medium">{item.alt}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Floating badge */}
-            <div className="absolute -bottom-5 -right-5 bg-[#E02020] text-white rounded-2xl p-4 shadow-xl z-10">
-              <div className="text-[10px] text-white/80">Desde</div>
-              <div className="text-2xl" style={{ fontWeight: 800 }}>2024</div>
-              <div className="text-[10px] text-white/80">ao serviço da comunidade</div>
-            </div>
-
-            {/* Decorative element */}
-            <div className="absolute -top-6 -left-6 w-24 h-24 rounded-2xl bg-[#1BAFD6]/10 -z-10" />
           </motion.div>
         </div>
       </div>
