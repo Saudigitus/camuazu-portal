@@ -2,13 +2,23 @@ import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
 import { Shield } from "lucide-react";
+//@ts-ignore
+import momentumImg from "@/assets/partner/momentum.png";
+//@ts-ignore
+import diamondImg from "@/assets/partner/diamond.jpg";
+//@ts-ignore
+import betterCareImg from "@/assets/partner/better-care.jpg";
+//@ts-ignore
+import allianzImg from "@/assets/partner/allianz.png";
+//@ts-ignore
+import primeImg from "@/assets/partner/prime.png";
 
 const partners = [
-  { name: "Momentum Moçambique", color: "#1BAFD6" },
-  { name: "Diamond Companhia de Seguros", color: "#E02020" },
-  { name: "Better Care Seguros de Saúde", sub: "Palma Seguros", color: "#1BAFD6" },
-  { name: "Allianz Care", color: "#E02020" },
-  { name: "Prime Health Care", color: "#1BAFD6" },
+  { name: "Momentum Moçambique", color: "#1BAFD6", img: momentumImg },
+  { name: "Diamond Companhia de Seguros", color: "#E02020", img: diamondImg },
+  { name: "Better Care Seguros de Saúde", sub: "Palma Seguros", color: "#1BAFD6", img: betterCareImg },
+  { name: "Allianz Care", color: "#E02020", img: allianzImg },
+  { name: "Prime Health Care", color: "#1BAFD6", img: primeImg },
 ];
 
 export function Partners() {
@@ -48,12 +58,15 @@ export function Partners() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="group flex flex-col items-center justify-center bg-white rounded-2xl p-6 border border-gray-100 hover:border-transparent hover:shadow-lg transition-all duration-300 cursor-default"
             >
-              <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
-                style={{ backgroundColor: `${partner.color}10` }}
-              >
-                <Shield size={24} style={{ color: partner.color }} />
-              </div>
+              {partner.img ? (
+                <div className="w-20 h-14 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
+                  <img
+                    src={partner.img}
+                    alt={partner.name}
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
+              ) : null}
               <h3 className="text-gray-800 text-sm font-semibold text-center leading-tight">
                 {partner.name}
               </h3>

@@ -33,7 +33,7 @@ export default defineConfig({
     tailwindcss(),
     figmaAssetPlugin(),
   ],
-  base: '/camuazo/',
+  base: '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
