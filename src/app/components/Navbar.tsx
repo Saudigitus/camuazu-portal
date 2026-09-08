@@ -39,7 +39,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => handleNav("#hero")}>
-            <img src={logoImg} alt="Centro Médico Camuazu" className="h-14 w-auto object-contain" />
+            <img src={logoImg} alt="Centro Médico Camuazu" className="h-16 w-auto object-contain" />
           </div>
 
           {/* Desktop Links */}

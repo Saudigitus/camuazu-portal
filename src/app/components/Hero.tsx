@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "motion/react";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 //@ts-ignore
 import internamentoImg from "@/assets/internamento.png";
 //@ts-ignore
@@ -33,8 +33,12 @@ export function Hero() {
     setCurrent((prev) => (prev + 1) % slides.length);
   }, []);
 
+  const prev = useCallback(() => {
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+  }, []);
+
   useEffect(() => {
-    const timer = setInterval(next, 5000);
+    const timer = setInterval(next, 10000);
     return () => clearInterval(timer);
   }, [next]);
 
@@ -61,29 +65,41 @@ export function Hero() {
           </div>
         ))}
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#03224C]/90 via-[#03224C]/75 to-[#1BAFD6]/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#03224C]/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#03224C]/95 via-[#03224C]/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#03224C]/70 via-[#03224C]/20 to-transparent" />
       </div>
 
       {/* Decorative Circles */}
-      <div className="absolute top-1/4 right-10 w-72 h-72 rounded-full border border-[#1BAFD6]/20 opacity-60 hidden lg:block" />
-      <div className="absolute top-1/3 right-20 w-48 h-48 rounded-full border border-white/10 opacity-40 hidden lg:block" />
-      <div className="absolute bottom-1/4 right-5 w-32 h-32 rounded-full bg-[#1BAFD6]/10 blur-2xl hidden lg:block" />
+      <div className="absolute top-1/4 right-10 w-48 h-48 lg:w-72 lg:h-72 rounded-full border border-[#1BAFD6]/20 opacity-60 hidden md:block" />
+      <div className="absolute top-1/3 right-20 w-32 h-32 lg:w-48 lg:h-48 rounded-full border border-white/10 opacity-40 hidden md:block" />
+      <div className="absolute bottom-1/4 right-5 w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-[#1BAFD6]/10 blur-2xl hidden md:block" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-[8%] px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+      <div className="relative z-10 max-w-7xl mx-[8%] px-4 sm:px-6 lg:px-8 pt-24 pb-16">
         <div className="max-w-2xl relative" style={{ minHeight: "380px" }}>
           {/* Slide 0 - Original Hero Content */}
           <div
             className="transition-opacity duration-1000 ease-in-out"
             style={{ opacity: current === 0 ? 1 : 0, position: current === 0 ? "relative" : "absolute", pointerEvents: current === 0 ? "auto" : "none", top: 0, left: 0, right: 0 }}
           >
+            {/* Logo Text */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-6"
+            >
+              <span className="text-[#1BAFD6] text-lg sm:text-xl md:text-xl font-bold tracking-tight uppercase">
+                Clínica{" "}Camuazu
+              </span>
+            </motion.div>
+
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-white mb-6"
-              style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)", fontWeight: 800, lineHeight: 1.15 }}
+              style={{ fontSize: "clamp(2rem, 5vw, 4rem)", fontWeight: 800, lineHeight: 1.15 }}
             >
               Cuidamos de{" "}
               <span className="text-[#1BAFD6]">si</span>{" "}
@@ -95,11 +111,11 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="flex flex-wrap gap-3 mb-10"
+              className="flex flex-wrap gap-3 sm:gap-4 mb-8 sm:mb-10"
             >
               {highlights.map((item) => (
-                <div key={item} className="flex items-center gap-2 text-white/90 text-sm">
-                  <CheckCircle2 size={16} className="text-[#1BAFD6]" />
+                <div key={item} className="flex items-center gap-2 text-white/90 text-xs sm:text-sm">
+                  <CheckCircle2 size={14} className="text-[#1BAFD6] shrink-0" />
                   {item}
                 </div>
               ))}
@@ -109,18 +125,18 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-3 sm:gap-4"
             >
               <button
                 onClick={() => scrollTo("#contact")}
-                className="flex items-center gap-2 bg-[#E02020] hover:bg-[#c01818] text-white px-8 py-4 rounded-md text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                className="flex items-center gap-2 bg-[#E02020] hover:bg-[#c01818] text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
               >
                 Marcar Consulta
                 <ArrowRight size={16} />
               </button>
               <button
                 onClick={() => scrollTo("#services")}
-                className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-md text-sm transition-all duration-200"
+                className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-sm transition-all duration-200"
               >
                 Ver Serviços
               </button>
@@ -134,35 +150,35 @@ export function Hero() {
               className="transition-opacity duration-1000 ease-in-out"
               style={{ opacity: current === i + 1 ? 1 : 0, position: current === i + 1 ? "relative" : "absolute", pointerEvents: current === i + 1 ? "auto" : "none", top: 0, left: 0, right: 0 }}
             >
-              <div
-                className="inline-block px-3 py-1.5 rounded-full text-xs text-white font-medium mb-4"
-                style={{ backgroundColor: slide.tagColor }}
-              >
-                {slide.tag}
+              {/* Logo Text */}
+              <div className="mb-6">
+                <span className="text-[#1BAFD6] text-lg sm:text-xl md:text-xl font-bold tracking-tight uppercase">
+                  Clínica{" "}Camuazu
+                </span>
               </div>
 
               <h1
                 className="text-white mb-3"
-                style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)", fontWeight: 800, lineHeight: 1.15 }}
+                style={{ fontSize: "clamp(1.8rem, 5vw, 4rem)", fontWeight: 800, lineHeight: 1.15 }}
               >
                 {slide.title}
               </h1>
 
-              <p className="text-white/80 text-lg mb-8 max-w-lg leading-relaxed">
+              <p className="text-white/80 text-base sm:text-lg mb-6 sm:mb-8 max-w-lg leading-relaxed">
                 {slide.desc}
               </p>
 
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-3 sm:gap-4">
                 <button
                   onClick={() => scrollTo("#contact")}
-                  className="flex items-center gap-2 bg-[#E02020] hover:bg-[#c01818] text-white px-8 py-4 rounded-md text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                  className="flex items-center gap-2 bg-[#E02020] hover:bg-[#c01818] text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                 >
                   Marcar Consulta
                   <ArrowRight size={16} />
                 </button>
                 <button
                   onClick={() => scrollTo("#services")}
-                  className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-md text-sm transition-all duration-200"
+                  className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-sm transition-all duration-200"
                 >
                   Ver Serviços
                 </button>
@@ -173,17 +189,30 @@ export function Hero() {
       </div>
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+      <div className="absolute bottom-24 right-8 sm:right-12 lg:right-16 z-10 flex items-center gap-3">
+        <button
+          onClick={prev}
+          className="flex items-center justify-center w-9 h-9 rounded-lg border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200"
+          aria-label="Slide anterior"
+        >
+          <ChevronLeft size={18} />
+        </button>
         {slides.map((slide, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-              i === current ? "bg-[#1BAFD6] w-8" : "bg-white/40 hover:bg-white/60"
-            }`}
+            className={`h-1 rounded-full transition-all duration-300 ${i === current ? "bg-[#1BAFD6] w-10" : "bg-white/30 hover:bg-white/50 w-6"
+              }`}
             aria-label={slide.alt}
           />
         ))}
+        <button
+          onClick={next}
+          className="flex items-center justify-center w-9 h-9 rounded-lg border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200"
+          aria-label="Proximo slide"
+        >
+          <ChevronRight size={18} />
+        </button>
       </div>
 
       {/* Bottom Wave */}

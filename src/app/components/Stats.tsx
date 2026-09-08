@@ -4,10 +4,10 @@ import { useRef } from "react";
 import { Users, Award, Clock, Heart } from "lucide-react";
 
 const stats = [
-  { icon: Users, value: "5000+", label: "Pacientes Atendidos", color: "#1BAFD6" },
+  { icon: Users, value: "300+", label: "Pacientes Atendidos", color: "#1BAFD6" },
   { icon: Award, value: "10+", label: "Especialidades Médicas", color: "#E02020" },
-  { icon: Clock, value: "24h", label: "Atendimento de Urgência", color: "#1BAFD6" },
-  { icon: Heart, value: "98%", label: "Satisfação dos Pacientes", color: "#E02020" },
+  { icon: Clock, value: "Das 8h às 24h", label: "Todos os dias", color: "#1BAFD6" },
+  // { icon: Heart, value: "98%", label: "Satisfação dos Pacientes", color: "#E02020" },
 ];
 
 export function Stats() {
@@ -17,7 +17,7 @@ export function Stats() {
   return (
     <section className="py-16 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
