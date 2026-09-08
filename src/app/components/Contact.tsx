@@ -55,10 +55,6 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          {/* <div className="inline-flex items-center gap-2 bg-[#1BAFD6]/10 text-[#1BAFD6] px-4 py-2 rounded-full text-sm mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#1BAFD6]" />
-            Contacte-Nos
-          </div> */}
           <h2 className="text-gray-900 mb-4" style={{ fontSize: "clamp(1.8rem, 3vw, 2.8rem)", fontWeight: 800, lineHeight: 1.2 }}>
             Marque a Sua{" "}
             <span className="text-[#E02020]">Consulta</span>
@@ -105,7 +101,7 @@ export function Contact() {
               </motion.div>
             ))}
 
-            {/* Map Embed placeholder */}
+            {/* Map Embed */}
             <div className="rounded-2xl overflow-hidden h-52 bg-gray-100 relative">
               <iframe
                 title="Localização Centro Médico Camuazu"
@@ -148,8 +144,9 @@ export function Contact() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-white/60 text-xs mb-2">Nome Completo *</label>
+                    <label htmlFor="contact-name" className="block text-white/60 text-xs mb-2">Nome Completo *</label>
                     <input
+                      id="contact-name"
                       type="text"
                       required
                       value={form.name}
@@ -159,8 +156,9 @@ export function Contact() {
                     />
                   </div>
                   <div>
-                    <label className="block text-white/60 text-xs mb-2">Telefone *</label>
+                    <label htmlFor="contact-phone" className="block text-white/60 text-xs mb-2">Telefone *</label>
                     <input
+                      id="contact-phone"
                       type="tel"
                       required
                       value={form.phone}
@@ -172,8 +170,9 @@ export function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-white/60 text-xs mb-2">Especialidade</label>
+                  <label htmlFor="contact-service" className="block text-white/60 text-xs mb-2">Especialidade</label>
                   <select
+                    id="contact-service"
                     value={form.service}
                     onChange={(e) => setForm({ ...form, service: e.target.value })}
                     className="w-full bg-white/10 border border-white/10 focus:border-[#1BAFD6] rounded-xl px-4 py-3 text-white outline-none transition-colors text-sm appearance-none"
@@ -191,8 +190,9 @@ export function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-white/60 text-xs mb-2">Mensagem</label>
+                  <label htmlFor="contact-message" className="block text-white/60 text-xs mb-2">Mensagem</label>
                   <textarea
+                    id="contact-message"
                     rows={4}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}

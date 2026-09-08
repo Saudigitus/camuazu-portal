@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
-import { useRef } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
+import { useNavigate } from "react-router";
 import {
   Stethoscope, TestTube2, Scan, ShieldCheck, Syringe,
   Ambulance, BedDouble, Home, Eye, Pill, HeartPulse, ArrowRight
@@ -86,9 +87,81 @@ const services = [
   },
 ];
 
-export function Services() {
+const CARD_WIDTH = 296;
+
+function ServiceCard({ service, i, inView, mode }: { service: typeof services[0]; i: number; inView: boolean; mode: "carousel" | "grid" }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: i * 0.06 }}
+      className={`group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-gray-100 hover:border-transparent transition-all duration-300 hover:-translate-y-1.5 cursor-pointer ${
+        mode === "carousel" ? "shrink-0 w-[280px]" : ""
+      }`}
+    >
+      <div
+        className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
+        style={{ backgroundColor: `${service.color}12` }}
+      >
+        <service.icon size={22} style={{ color: service.color }} />
+      </div>
+      <h3 className="text-gray-900 mb-2" style={{ fontSize: "1rem", fontWeight: 700 }}>
+        {service.title}
+      </h3>
+      <p className="text-gray-400 text-xs leading-relaxed mb-4">{service.desc}</p>
+
+      <div className="flex flex-wrap gap-1.5 mb-4">
+        {service.items.slice(0, 3).map((item) => (
+          <span
+            key={item}
+            className="text-[10px] px-2 py-0.5 rounded-full font-medium"
+            style={{ backgroundColor: `${service.color}10`, color: service.color }}
+          >
+            {item}
+          </span>
+        ))}
+        {service.items.length > 3 && (
+          <span className="text-[10px] px-2 py-0.5 rounded-full bg-gray-100 text-gray-400 font-medium">
+            +{service.items.length - 3}
+          </span>
+        )}
+      </div>
+
+      <div
+        className="h-0.5 w-0 group-hover:w-full rounded-full transition-all duration-300"
+        style={{ backgroundColor: service.color }}
+      />
+    </motion.div>
+  );
+}
+
+export function Services({ layout = "grid" }: { layout?: "carousel" | "grid" }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const navigate = useNavigate();
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [paused, setPaused] = useState(false);
+
+  const allItems = [...services, null];
+
+  const scroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el || paused) return;
+
+    const maxScroll = el.scrollWidth - el.clientWidth;
+
+    if (el.scrollLeft >= maxScroll - 1) {
+      el.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      el.scrollBy({ left: CARD_WIDTH, behavior: "smooth" });
+    }
+  }, [paused]);
+
+  useEffect(() => {
+    if (layout !== "carousel") return;
+    const interval = setInterval(scroll, 3000);
+    return () => clearInterval(interval);
+  }, [scroll, layout]);
 
   return (
     <section id="services" className="py-24 bg-gradient-to-b from-[#F8FBFF] to-white" ref={ref}>
@@ -113,53 +186,52 @@ export function Services() {
           </p>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {services.map((service, i) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-gray-100 hover:border-transparent transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
-            >
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
-                style={{ backgroundColor: `${service.color}12` }}
-              >
-                <service.icon size={22} style={{ color: service.color }} />
-              </div>
-              <h3 className="text-gray-900 mb-2" style={{ fontSize: "1rem", fontWeight: 700 }}>
-                {service.title}
-              </h3>
-              <p className="text-gray-400 text-xs leading-relaxed mb-4">{service.desc}</p>
+        {/* Carousel */}
+        {layout === "carousel" && (
+          <div
+            ref={scrollRef}
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            className="overflow-hidden -mx-4 px-4 py-3"
+          >
+            <div className="flex gap-5 w-max">
+              {allItems.map((item, i) => {
+                if (!item) {
+                  return (
+                    <motion.div
+                      key="ver-mais"
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={inView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.3, delay: services.length * 0.06 }}
+                      onClick={() => navigate("/servicos")}
+                      className="group bg-[#03224C] rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 cursor-pointer shrink-0 w-[280px] flex flex-col items-center justify-center text-center"
+                    >
+                      <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:bg-white/20">
+                        <ArrowRight size={24} className="text-[#1BAFD6]" />
+                      </div>
+                      <h3 className="text-white mb-2" style={{ fontSize: "1.1rem", fontWeight: 700 }}>
+                        Ver Todos os Serviços
+                      </h3>
+                      <p className="text-white/50 text-xs leading-relaxed">
+                        Explore todas as nossas especialidades e complete a lista de serviços.
+                      </p>
+                    </motion.div>
+                  );
+                }
+                return <ServiceCard key={item.title} service={item} i={i} inView={inView} mode="carousel" />;
+              })}
+            </div>
+          </div>
+        )}
 
-              {/* Items preview */}
-              <div className="flex flex-wrap gap-1.5 mb-4">
-                {service.items.slice(0, 3).map((item) => (
-                  <span
-                    key={item}
-                    className="text-[10px] px-2 py-0.5 rounded-full font-medium"
-                    style={{ backgroundColor: `${service.color}10`, color: service.color }}
-                  >
-                    {item}
-                  </span>
-                ))}
-                {service.items.length > 3 && (
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-gray-100 text-gray-400 font-medium">
-                    +{service.items.length - 3}
-                  </span>
-                )}
-              </div>
-
-              {/* Hover accent line */}
-              <div
-                className="h-0.5 w-0 group-hover:w-full rounded-full transition-all duration-300"
-                style={{ backgroundColor: service.color }}
-              />
-            </motion.div>
-          ))}
-        </div>
+        {/* Grid */}
+        {layout === "grid" && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {services.map((service, i) => (
+              <ServiceCard key={service.title} service={service} i={i} inView={inView} mode="grid" />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

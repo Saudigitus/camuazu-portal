@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
-import { User, GraduationCap, Briefcase } from "lucide-react";
+import { GraduationCap, Briefcase } from "lucide-react";
 
 const team = [
   {
@@ -10,6 +10,7 @@ const team = [
     formation: "Faculdade de Medicina - UDM",
     experience: "15+ anos de experiência",
     color: "#1BAFD6",
+    initials: "CM",
   },
   {
     name: "Dra. Ana Tembe",
@@ -17,6 +18,7 @@ const team = [
     formation: "Faculdade de Medicina - UEM",
     experience: "10+ anos de experiência",
     color: "#E02020",
+    initials: "AT",
   },
   {
     name: "Dr. Miguel Santos",
@@ -24,6 +26,7 @@ const team = [
     formation: "Universidade de São Paulo",
     experience: "12+ anos de experiência",
     color: "#1BAFD6",
+    initials: "MS",
   },
   {
     name: "Dra. Fátima Namuera",
@@ -31,6 +34,7 @@ const team = [
     formation: "Faculdade de Medicina - UDM",
     experience: "8+ anos de experiência",
     color: "#E02020",
+    initials: "FN",
   },
   {
     name: "Dr. João Macamo",
@@ -38,6 +42,7 @@ const team = [
     formation: "Universidade Eduardo Mondlane",
     experience: "14+ anos de experiência",
     color: "#1BAFD6",
+    initials: "JM",
   },
   {
     name: "Dra. Sara Cossa",
@@ -45,6 +50,7 @@ const team = [
     formation: "Faculdade de Medicina - UEM",
     experience: "9+ anos de experiência",
     color: "#E02020",
+    initials: "SC",
   },
 ];
 
@@ -87,10 +93,10 @@ export function Team() {
             >
               {/* Avatar */}
               <div
-                className="w-20 h-20 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-105"
-                style={{ backgroundColor: `${member.color}12` }}
+                className="w-20 h-20 rounded-full flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-105 shadow-lg"
+                style={{ backgroundColor: member.color }}
               >
-                <User size={32} style={{ color: member.color }} />
+                <span className="text-white text-xl font-bold">{member.initials}</span>
               </div>
 
               {/* Info */}

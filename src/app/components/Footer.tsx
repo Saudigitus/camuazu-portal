@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
-//@ts-ignore
+import { useNavigate } from "react-router";
+import { scrollTo } from "@/utils";
 import logoImg from "@/assets/logo.png";
 
 const footerLinks = {
@@ -16,17 +17,22 @@ const footerLinks = {
     "Medicina Preventiva",
   ],
   quick: [
-    { label: "Sobre Nós", href: "#about" },
-    { label: "Serviços", href: "#services" },
-    { label: "Instalações", href: "#facilities" },
-    { label: "Marcar Consulta", href: "#contact" },
+    { label: "Sobre Nós", href: "/sobre", type: "page" },
+    { label: "Serviços", href: "/servicos", type: "page" },
+    { label: "Contactos", href: "/contactos", type: "page" },
+    { label: "Marcar Consulta", href: "/contactos", type: "page" },
   ],
 };
 
 export function Footer() {
-  const scrollTo = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+  const navigate = useNavigate();
+
+  const handleLink = (href: string, type: string) => {
+    if (type === "page") {
+      navigate(href);
+    } else {
+      scrollTo(href);
+    }
   };
 
   return (
@@ -42,16 +48,14 @@ export function Footer() {
             <p className="text-white/50 text-sm leading-relaxed mb-6">
               Cuidamos de si e da sua família com dedicação, profissionalismo e tecnologia moderna.
             </p>
-            {/* Social */}
             <div className="flex items-center gap-3">
               {[Facebook, Instagram, Twitter].map((Icon, i) => (
-                <a
+                <span
                   key={i}
-                  href="#"
                   className="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#1BAFD6] flex items-center justify-center transition-colors duration-200"
                 >
                   <Icon size={15} />
-                </a>
+                </span>
               ))}
             </div>
           </div>
@@ -82,7 +86,7 @@ export function Footer() {
               {footerLinks.quick.map((link) => (
                 <li key={link.label}>
                   <button
-                    onClick={() => scrollTo(link.href)}
+                    onClick={() => handleLink(link.href, link.type)}
                     className="text-white/50 text-sm hover:text-[#1BAFD6] transition-colors flex items-center gap-2"
                   >
                     <span className="w-1 h-1 rounded-full bg-[#E02020]" />
@@ -142,7 +146,7 @@ export function Footer() {
       <div className="border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-white/30 text-xs">
-            © 2026 Centro Médico Camuazu. Todos os direitos reservados.
+            © {new Date().getFullYear()} Centro Médico Camuazu. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-1">
             <span className="w-2 h-2 rounded-full bg-[#1BAFD6]" />

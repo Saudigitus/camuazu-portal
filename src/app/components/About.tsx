@@ -1,14 +1,11 @@
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
-import { CheckCircle2, ArrowRight, Calendar, TrendingUp, Users } from "lucide-react";
-//@ts-ignore
+import { useNavigate } from "react-router";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 import consultaImg from "@/assets/consulta.png";
-//@ts-ignore
 import internamentoImg from "@/assets/internamento.png";
-//@ts-ignore
 import esperaImg from "@/assets/espera.png";
-//@ts-ignore
 import consultorioImg from "@/assets/consultorio.png";
 
 const gallery = [
@@ -30,11 +27,7 @@ const features = [
 export function About() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-
-  const scrollTo = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
+  const navigate = useNavigate();
 
   return (
     <section id="about" className="py-24 bg-gray-50 overflow-hidden" ref={ref}>
@@ -77,6 +70,7 @@ export function About() {
                     <img
                       src={item.img}
                       alt={item.alt}
+                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#03224C]/70 via-[#03224C]/10 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
@@ -88,14 +82,6 @@ export function About() {
               })}
             </div>
 
-            {/* Floating badge */}
-            {/* <div className="absolute -bottom-5 -right-5 bg-[#E02020] text-white rounded-2xl p-4 shadow-xl z-10">
-              <div className="text-[10px] text-white/80">Desde</div>
-              <div className="text-2xl" style={{ fontWeight: 800 }}>2024</div>
-              <div className="text-[10px] text-white/80">ao serviço da comunidade</div>
-            </div> */}
-
-            {/* Decorative element */}
             <div className="absolute -top-6 -left-6 w-24 h-24 rounded-2xl bg-[#1BAFD6]/10 -z-10" />
           </motion.div>
 
@@ -135,7 +121,7 @@ export function About() {
             </div>
 
             <button
-              onClick={() => scrollTo("#contact")}
+              onClick={() => navigate("/sobre")}
               className="flex items-center gap-2 bg-[#1BAFD6] hover:bg-[#0d9bbf] text-white px-8 py-4 rounded-md text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
               Saber Mais

@@ -4,7 +4,6 @@ import { Hero } from "./components/Hero";
 import { Stats } from "./components/Stats";
 import { Services } from "./components/Services";
 import { About } from "./components/About";
-import { Facilities } from "./components/Facilities";
 import { WhyUs } from "./components/WhyUs";
 import { Testimonials } from "./components/Testimonials";
 import { Contact } from "./components/Contact";
@@ -13,6 +12,7 @@ import { Timeline } from "./components/Timeline";
 import { Partners } from "./components/Partners";
 import { Team } from "./components/Team";
 import { PageHero } from "./components/PageHero";
+import { ContactosPage } from "./pages/ContactosPage";
 
 function HomePage() {
   return (
@@ -21,11 +21,9 @@ function HomePage() {
       <Stats />
       <About />
       <Services layout="carousel" />
-      {/* <Facilities /> */}
       <WhyUs />
       <Partners />
       <Testimonials />
-      <Contact />
     </>
   );
 }
@@ -86,15 +84,29 @@ function ServicosPage() {
   );
 }
 
+function NotFoundPage() {
+  return (
+    <PageHero
+      title="Página"
+      highlight="Não Encontrada"
+      description="A página que procura não existe ou foi movida."
+    />
+  );
+}
+
 export default function App() {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/sobre" element={<SobrePage />} />
-        <Route path="/servicos" element={<ServicosPage />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/sobre" element={<SobrePage />} />
+          <Route path="/servicos" element={<ServicosPage />} />
+          <Route path="/contactos" element={<ContactosPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </main>
       <Footer />
     </div>
   );

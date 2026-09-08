@@ -2,15 +2,10 @@ import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
 import { Shield } from "lucide-react";
-//@ts-ignore
 import momentumImg from "@/assets/partner/momentum.png";
-//@ts-ignore
 import diamondImg from "@/assets/partner/diamond.jpg";
-//@ts-ignore
 import betterCareImg from "@/assets/partner/better-care.jpg";
-//@ts-ignore
 import allianzImg from "@/assets/partner/allianz.png";
-//@ts-ignore
 import primeImg from "@/assets/partner/prime.png";
 
 const partners = [
@@ -63,6 +58,7 @@ export function Partners() {
                   <img
                     src={partner.img}
                     alt={partner.name}
+                    loading="lazy"
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>

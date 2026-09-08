@@ -37,11 +37,6 @@ export function Testimonials() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
-  const scrollTo = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section className="py-24 bg-gradient-to-b from-[#F0F8FF] to-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -112,24 +107,20 @@ export function Testimonials() {
               transition={{ duration: 0.6, delay: i * 0.08 }}
               className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl border border-gray-100 hover:border-transparent transition-all duration-300 hover:-translate-y-1 relative"
             >
-              {/* Quote Icon */}
               <Quote
                 size={28}
                 className="absolute top-4 right-4 opacity-10"
                 style={{ color: t.color }}
               />
 
-              {/* Stars */}
               <div className="flex gap-1 mb-4">
                 {Array.from({ length: 5 }).map((_, si) => (
                   <Star key={si} size={14} className="fill-amber-400 text-amber-400" />
                 ))}
               </div>
 
-              {/* Text */}
               <p className="text-gray-500 text-sm leading-relaxed mb-6">"{t.text}"</p>
 
-              {/* Author */}
               <div className="flex items-center gap-3">
                 <div
                   className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm shrink-0"
