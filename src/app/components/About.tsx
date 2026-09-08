@@ -106,20 +106,20 @@ export function About() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="order-1 lg:order-2"
           >
-            <h2 className="text-gray-900 mb-6" style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 800, lineHeight: 1.2 }}>
+            <h2 className="text-gray-900 mb-4" style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 800, lineHeight: 1.2 }}>
               Sobre nós
             </h2>
 
-            <p className="text-gray-500 mb-6 leading-relaxed">
+            <p className="text-gray-500 text-justify mb-3 leading-relaxed">
               O Centro Médico Camuazu nasceu com a missão de oferecer cuidados de saúde acessíveis e de qualidade à população de Nampula e arredores. Com uma equipa dedicada de profissionais e instalações modernas, estamos aqui para cuidar de si e da sua família.
             </p>
 
-            <p className="text-gray-500 mb-8 leading-relaxed">
+            <p className="text-gray-500 text-justify mb-3 leading-relaxed">
               Acreditamos que a saúde é um direito fundamental. Por isso, combinamos tecnologia avançada com um atendimento humanizado, garantindo que cada paciente receba o melhor cuidado possível.
             </p>
 
             {/* Features */}
-            <div className="grid grid-cols-1 gap-3 mb-8">
+            <div className="grid grid-cols-1 gap-3 mb-6">
               {features.map((feature, i) => (
                 <motion.div
                   key={feature}
@@ -136,7 +136,7 @@ export function About() {
 
             <button
               onClick={() => scrollTo("#contact")}
-              className="flex items-center gap-2 bg-[#1BAFD6] hover:bg-[#0d9bbf] text-white px-8 py-4 rounded-full text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+              className="flex items-center gap-2 bg-[#1BAFD6] hover:bg-[#0d9bbf] text-white px-8 py-4 rounded-md text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
               Saber Mais
               <ArrowRight size={16} />

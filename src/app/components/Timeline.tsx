@@ -34,13 +34,11 @@ export function Timeline() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mt-24"
           >
-                  <div className="text-center mb-6">
+            <div className="text-center mb-6">
               <h3 className="text-gray-900 mb-3" style={{ fontSize: "clamp(1.4rem, 2.5vw, 2rem)", fontWeight: 800 }}>
                 A Nossa <span className="text-[#1BAFD6]">Jornada</span>
               </h3>
-              <p className="text-gray-500 max-w-md mx-auto text-sm">
-                Uma historia de dedicacao e crescimento ao servico da comunidade de Nampula.
-              </p>
+
             </div>
 
             <div className="relative max-w-3xl mx-auto">

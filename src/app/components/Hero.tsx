@@ -48,7 +48,7 @@ export function Hero() {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="hero" className="relative min-h-[95vh] flex items-center overflow-hidden">
       {/* Background Slider */}
       <div className="absolute inset-0">
         {slides.map((slide, i) => (
@@ -70,8 +70,8 @@ export function Hero() {
       </div>
 
       {/* Decorative Circles */}
-      <div className="absolute top-1/4 right-10 w-48 h-48 lg:w-72 lg:h-72 rounded-full border border-[#1BAFD6]/20 opacity-60 hidden md:block" />
-      <div className="absolute top-1/3 right-20 w-32 h-32 lg:w-48 lg:h-48 rounded-full border border-white/10 opacity-40 hidden md:block" />
+      <div className="absolute top-1/4 right-10 w-48 h-48 lg:w-72 lg:h-72 rounded-full border border-[#1BAFD6]/20 opacity-100 hidden md:block" />
+      <div className="absolute top-1/3 right-20 w-32 h-32 lg:w-48 lg:h-48 rounded-full border border-white/10 opacity-100 hidden md:block" />
       <div className="absolute bottom-1/4 right-5 w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-[#1BAFD6]/10 blur-2xl hidden md:block" />
 
       {/* Content */}
@@ -125,7 +125,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="flex flex-wrap justify-center gap-3 sm:gap-4"
+              className="flex flex-wrap gap-3 sm:gap-4"
             >
               <button
                 onClick={() => scrollTo("#contact")}
@@ -168,7 +168,7 @@ export function Hero() {
                 {slide.desc}
               </p>
 
-              <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+              <div className="flex flex-wrap gap-3 sm:gap-4">
                 <button
                   onClick={() => scrollTo("#contact")}
                   className="flex items-center gap-2 bg-[#E02020] hover:bg-[#c01818] text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
@@ -188,23 +188,23 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Slide Controls */}
-      <div className="absolute bottom-24 right-8 sm:right-12 lg:right-16 z-10 flex items-center gap-3">
-        <button
-          onClick={prev}
-          className="flex items-center justify-center w-10 h-10 rounded-lg cursor-pointer border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200"
-          aria-label="Slide anterior"
-        >
-          <ChevronLeft size={20} />
-        </button>
-        <button
-          onClick={next}
-          className="flex items-center justify-center w-10 h-10 rounded-lg cursor-pointer border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200"
-          aria-label="Proximo slide"
-        >
-          <ChevronRight size={20} />
-        </button>
-      </div>
+      {/* Slide Controls - Left */}
+      <button
+        onClick={prev}
+        className="absolute left-4 sm:left-6 lg:left-8 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-12 h-12 rounded-md cursor-pointer border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200 backdrop-blur-sm"
+        aria-label="Slide anterior"
+      >
+        <ChevronLeft size={22} />
+      </button>
+
+      {/* Slide Controls - Right */}
+      <button
+        onClick={next}
+        className="absolute right-4 sm:right-6 lg:right-8 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-12 h-12 rounded-md cursor-pointer border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200 backdrop-blur-sm"
+        aria-label="Proximo slide"
+      >
+        <ChevronRight size={22} />
+      </button>
 
       {/* Bottom Wave */}
       {/* <div className="absolute bottom-0 left-0 right-0">

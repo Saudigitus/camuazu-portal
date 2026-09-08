@@ -7,9 +7,13 @@ const footerLinks = {
     "Clínica Geral",
     "Pediatria",
     "Cardiologia",
+    "Neurologia",
     "Ortopedia",
+    "Oftalmologia",
     "Ecografia",
+    "Vacinação",
     "Análises Clínicas",
+    "Medicina Preventiva",
   ],
   quick: [
     { label: "Sobre Nós", href: "#about" },
