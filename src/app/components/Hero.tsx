@@ -2,21 +2,21 @@ import { useState, useEffect, useCallback } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 //@ts-ignore
-import patientRoomImg from "figma:asset/1adf03808092d9e0d1067b4d078f3e620e857e3c.png";
+import internamentoImg from "@/assets/internamento.png";
 //@ts-ignore
-import waitingRoomImg from "figma:asset/aee0b42a5025c5cb14dda4e36321428e64fa7236.png";
+import esperaImg from "@/assets/espera.png";
 //@ts-ignore
-import officeImg from "figma:asset/1f777484ee2dd1feef27a81e75b0114875dc5d1a.png";
+import consultorioImg from "@/assets/consultorio.png";
 //@ts-ignore
-import exteriorImg from "figma:asset/c50ae334707ba9b1825aa0dc1f7c57af4bac43d1.png";
+import exteriorImg from "@/assets/exterior.png";
 //@ts-ignore
-import clinicImg from "figma:asset/c50ae334707ba9b1825aa0dc1f7c57af4bac43d1.png";
+import clinicImg from "@/assets/exterior.png";
 
 const slides = [
   { img: clinicImg, alt: "Centro Médico Camuazu", tag: "", tagColor: "", title: "", subtitle: "", desc: "" },
-  { img: patientRoomImg, alt: "Sala de Internamento", tag: "Internamento", tagColor: "#1BAFD6", title: "Sala de Internamento", subtitle: "Ambiente Moderno e Confortável", desc: "Quartos equipados com camas médicas modernas e monitorização contínua" },
-  { img: waitingRoomImg, alt: "Sala de Espera", tag: "Recepção", tagColor: "#E02020", title: "Sala de Espera", subtitle: "Ambiente Moderno e Confortável", desc: "Ambiente confortável e acolhedor para os nossos pacientes" },
-  { img: officeImg, alt: "Consultório Médico", tag: "Consultas", tagColor: "#1BAFD6", title: "Consultório Médico", subtitle: "Ambiente Moderno e Confortável", desc: "Consultórios equipados com tecnologia de ponta para diagnóstico preciso" },
+  { img: internamentoImg, alt: "Sala de Internamento", tag: "Internamento", tagColor: "#1BAFD6", title: "Sala de Internamento", subtitle: "Ambiente Moderno e Confortável", desc: "Quartos equipados com camas médicas modernas e monitorização contínua" },
+  { img: esperaImg, alt: "Sala de Espera", tag: "Recepção", tagColor: "#E02020", title: "Sala de Espera", subtitle: "Ambiente Moderno e Confortável", desc: "Ambiente confortável e acolhedor para os nossos pacientes" },
+  { img: consultorioImg, alt: "Consultório Médico", tag: "Consultas", tagColor: "#1BAFD6", title: "Consultório Médico", subtitle: "Ambiente Moderno e Confortável", desc: "Consultórios equipados com tecnologia de ponta para diagnóstico preciso" },
   { img: exteriorImg, alt: "Exterior da Clínica", tag: "Localização", tagColor: "#E02020", title: "Exterior da Clínica", subtitle: "Ambiente Moderno e Confortável", desc: "Localizado no Bairro Muatala, de fácil acesso em Nampula" },
 ];
 

@@ -3,7 +3,7 @@ import { useInView } from "motion/react";
 import { useRef } from "react";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 //@ts-ignore
-import consultationImg from "figma:asset/7d8ae26c0e3a71d4a1985b6256dd0f4e7238d8c5.png";
+import consultaImg from "@/assets/consulta.png";
 
 const features = [
   "Equipa médica altamente qualificada e especializada",
@@ -37,7 +37,7 @@ export function About() {
             {/* Main image */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src={consultationImg}
+                src={consultaImg}
                 alt="Consulta médica"
                 className="w-full h-[520px] object-cover"
               />

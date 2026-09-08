@@ -1,29 +1,32 @@
-//@ts-nocheck
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
-import patientRoomImg from "figma:asset/1adf03808092d9e0d1067b4d078f3e620e857e3c.png";
-import waitingRoomImg from "figma:asset/aee0b42a5025c5cb14dda4e36321428e64fa7236.png";
-import officeImg from "figma:asset/1f777484ee2dd1feef27a81e75b0114875dc5d1a.png";
-import exteriorImg from "figma:asset/c50ae334707ba9b1825aa0dc1f7c57af4bac43d1.png";
+//@ts-ignore
+import internamentoImg from "@/assets/internamento.png";
+//@ts-ignore
+import esperaImg from "@/assets/espera.png";
+//@ts-ignore
+import consultorioImg from "@/assets/consultorio.png";
+//@ts-ignore
+import exteriorImg from "@/assets/exterior.png";
 
 const facilities = [
   {
-    img: patientRoomImg,
+    img: internamentoImg,
     title: "Sala de Internamento",
     desc: "Quartos equipados com camas médicas modernas e monitorização contínua",
     badge: "Internamento",
     badgeColor: "#1BAFD6",
   },
   {
-    img: waitingRoomImg,
+    img: esperaImg,
     title: "Sala de Espera",
     desc: "Ambiente confortável e acolhedor para os nossos pacientes",
     badge: "Recepção",
     badgeColor: "#E02020",
   },
   {
-    img: officeImg,
+    img: consultorioImg,
     title: "Consultório Médico",
     desc: "Consultórios equipados com tecnologia de ponta para diagnóstico preciso",
     badge: "Consultas",
