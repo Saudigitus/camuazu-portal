@@ -17,7 +17,7 @@ export default function App() {
       <Stats />
       <About />
       <Services />
-      <Facilities />
+      {/* <Facilities /> */}
       <WhyUs />
       {/* <Testimonials /> */}
       <Contact />

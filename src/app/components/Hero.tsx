@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "motion/react";
-import { ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronLeft, ChevronRight, Phone } from "lucide-react";
 //@ts-ignore
 import internamentoImg from "@/assets/internamento.png";
 //@ts-ignore
@@ -192,7 +192,7 @@ export function Hero() {
       <div className="absolute bottom-24 right-8 sm:right-12 lg:right-16 z-10 flex items-center gap-3">
         <button
           onClick={prev}
-          className="flex items-center justify-center w-9 h-9 rounded-lg border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200"
+          className="flex items-center justify-center w-9 h-9 rounded-lg cursor-pointer border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200"
           aria-label="Slide anterior"
         >
           <ChevronLeft size={18} />
@@ -201,14 +201,14 @@ export function Hero() {
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`h-1 rounded-full transition-all duration-300 ${i === current ? "bg-[#1BAFD6] w-10" : "bg-white/30 hover:bg-white/50 w-6"
+            className={`h-1 rounded-full transition-all cursor-pointer duration-300 ${i === current ? "bg-[#1BAFD6] w-10" : "bg-white/30 hover:bg-white/50 w-6"
               }`}
             aria-label={slide.alt}
           />
         ))}
         <button
           onClick={next}
-          className="flex items-center justify-center w-9 h-9 rounded-lg border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200"
+          className="flex items-center justify-center w-9 h-9 rounded-lg cursor-pointer border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200"
           aria-label="Proximo slide"
         >
           <ChevronRight size={18} />
