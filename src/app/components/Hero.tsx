@@ -1,19 +1,14 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "motion/react";
-import { ArrowRight, CheckCircle2, ChevronLeft, ChevronRight, Phone } from "lucide-react";
-//@ts-ignore
+import { ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { scrollTo } from "@/utils";
 import internamentoImg from "@/assets/internamento.png";
-//@ts-ignore
 import esperaImg from "@/assets/espera.png";
-//@ts-ignore
 import consultorioImg from "@/assets/consultorio.png";
-//@ts-ignore
 import exteriorImg from "@/assets/exterior.png";
-//@ts-ignore
-import clinicImg from "@/assets/exterior.png";
 
 const slides = [
-  { img: clinicImg, alt: "Centro Médico Camuazu", tag: "", tagColor: "", title: "", subtitle: "", desc: "" },
+  { img: exteriorImg, alt: "Centro Médico Camuazu", tag: "", tagColor: "", title: "", subtitle: "", desc: "" },
   { img: internamentoImg, alt: "Sala de Internamento", tag: "Internamento", tagColor: "#1BAFD6", title: "Sala de Internamento", subtitle: "Ambiente Moderno e Confortável", desc: "Quartos equipados com camas médicas modernas e monitorização contínua" },
   { img: esperaImg, alt: "Sala de Espera", tag: "Recepção", tagColor: "#E02020", title: "Sala de Espera", subtitle: "Ambiente Moderno e Confortável", desc: "Ambiente confortável e acolhedor para os nossos pacientes" },
   { img: consultorioImg, alt: "Consultório Médico", tag: "Consultas", tagColor: "#1BAFD6", title: "Consultório Médico", subtitle: "Ambiente Moderno e Confortável", desc: "Consultórios equipados com tecnologia de ponta para diagnóstico preciso" },
@@ -28,6 +23,12 @@ const highlights = [
 
 export function Hero() {
   const [current, setCurrent] = useState(0);
+  const [timerKey, setTimerKey] = useState(0);
+
+  const goTo = useCallback((index: number) => {
+    setCurrent(index);
+    setTimerKey((k) => k + 1);
+  }, []);
 
   const next = useCallback(() => {
     setCurrent((prev) => (prev + 1) % slides.length);
@@ -40,12 +41,7 @@ export function Hero() {
   useEffect(() => {
     const timer = setInterval(next, 10000);
     return () => clearInterval(timer);
-  }, [next]);
-
-  const scrollTo = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
+  }, [next, timerKey]);
 
   return (
     <section id="hero" className="relative min-h-[95vh] flex items-center overflow-hidden">
@@ -53,26 +49,26 @@ export function Hero() {
       <div className="absolute inset-0">
         {slides.map((slide, i) => (
           <div
-            key={slide.img}
+            key={i}
             className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
             style={{ opacity: i === current ? 1 : 0 }}
           >
             <img
               src={slide.img}
               alt={slide.alt}
+              loading={i === 0 ? "eager" : "lazy"}
               className="w-full h-full object-cover object-center"
             />
           </div>
         ))}
-        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#03224C]/95 via-[#03224C]/50 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#03224C]/70 via-[#03224C]/20 to-transparent" />
       </div>
 
       {/* Decorative Circles */}
-      <div className="absolute top-1/4 right-10 w-48 h-48 lg:w-72 lg:h-72 rounded-full border border-[#1BAFD6]/20 opacity-100 hidden md:block" />
-      <div className="absolute top-1/3 right-20 w-32 h-32 lg:w-48 lg:h-48 rounded-full border border-white/10 opacity-100 hidden md:block" />
-      <div className="absolute bottom-1/4 right-5 w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-[#1BAFD6]/10 blur-2xl hidden md:block" />
+      <div className="absolute top-1/4 right-10 w-48 h-48 lg:w-72 lg:h-72 rounded-full border border-[#1BAFD6]/20 opacity-100 hidden md:block" aria-hidden="true" />
+      <div className="absolute top-1/3 right-20 w-32 h-32 lg:w-48 lg:h-48 rounded-full border border-white/10 opacity-100 hidden md:block" aria-hidden="true" />
+      <div className="absolute bottom-1/4 right-5 w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-[#1BAFD6]/10 blur-2xl hidden md:block" aria-hidden="true" />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-[8%] px-4 sm:px-6 lg:px-8 pt-28 pb-2">
@@ -82,7 +78,6 @@ export function Hero() {
             className="transition-opacity duration-1000 ease-in-out"
             style={{ opacity: current === 0 ? 1 : 0, position: current === 0 ? "relative" : "absolute", pointerEvents: current === 0 ? "auto" : "none", top: 0, left: 0, right: 0 }}
           >
-            {/* Logo Text */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -102,7 +97,7 @@ export function Hero() {
               style={{ fontSize: "clamp(2rem, 5vw, 4rem)", fontWeight: 800, lineHeight: 1.15 }}
             >
               Cuidamos de{" "}
-              <span className="text-[#1BAFD6]">si</span>{" "}
+              <span className="text-[#1BAFD6]">Si</span>{" "}
               e da sua{" "}
               <span className="text-[#E02020]">Família</span>
             </motion.h1>
@@ -150,7 +145,6 @@ export function Hero() {
               className="transition-opacity duration-1000 ease-in-out"
               style={{ opacity: current === i + 1 ? 1 : 0, position: current === i + 1 ? "relative" : "absolute", pointerEvents: current === i + 1 ? "auto" : "none", top: 0, left: 0, right: 0 }}
             >
-              {/* Logo Text */}
               <div className="mb-2">
                 <span className="text-[#1BAFD6] text-lg sm:text-xl md:text-xl font-bold tracking-tight uppercase">
                   Clínica{" "}Camuazu
@@ -188,9 +182,27 @@ export function Hero() {
         </div>
       </div>
 
+      {/* Dots */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2" role="tablist" aria-label="Slides">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goTo(i)}
+            role="tab"
+            aria-selected={current === i}
+            aria-label={`Slide ${i + 1}`}
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+              current === i
+                ? "bg-[#1BAFD6] w-8"
+                : "bg-white/40 hover:bg-white/60"
+            }`}
+          />
+        ))}
+      </div>
+
       {/* Slide Controls - Left */}
       <button
-        onClick={prev}
+        onClick={() => { prev(); setTimerKey((k) => k + 1); }}
         className="absolute left-4 sm:left-6 lg:left-8 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-12 h-12 rounded-md cursor-pointer border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200 backdrop-blur-sm"
         aria-label="Slide anterior"
       >
@@ -199,19 +211,12 @@ export function Hero() {
 
       {/* Slide Controls - Right */}
       <button
-        onClick={next}
+        onClick={() => { next(); setTimerKey((k) => k + 1); }}
         className="absolute right-4 sm:right-6 lg:right-8 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-12 h-12 rounded-md cursor-pointer border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200 backdrop-blur-sm"
-        aria-label="Proximo slide"
+        aria-label="Próximo slide"
       >
         <ChevronRight size={22} />
       </button>
-
-      {/* Bottom Wave */}
-      {/* <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <path d="M0 80L1440 80L1440 30C1200 70 960 10 720 40C480 70 240 0 0 30L0 80Z" fill="white" />
-        </svg>
-      </div> */}
     </section>
   );
 }

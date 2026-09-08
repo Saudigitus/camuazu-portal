@@ -20,7 +20,7 @@ function HomePage() {
       <Hero />
       <Stats />
       <About />
-      <Services />
+      <Services layout="carousel" />
       {/* <Facilities /> */}
       <WhyUs />
       <Partners />
