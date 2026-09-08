@@ -1,7 +1,21 @@
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 //@ts-ignore
-import clinicImg from "figma:asset/c50ae334707ba9b1825aa0dc1f7c57af4bac43d1.png";
+import patientRoomImg from "figma:asset/1adf03808092d9e0d1067b4d078f3e620e857e3c.png";
+//@ts-ignore
+import waitingRoomImg from "figma:asset/aee0b42a5025c5cb14dda4e36321428e64fa7236.png";
+//@ts-ignore
+import officeImg from "figma:asset/1f777484ee2dd1feef27a81e75b0114875dc5d1a.png";
+//@ts-ignore
+import exteriorImg from "figma:asset/c50ae334707ba9b1825aa0dc1f7c57af4bac43d1.png";
+
+const slides = [
+  { img: patientRoomImg, alt: "Sala de Internamento", tag: "Internamento", tagColor: "#1BAFD6", desc: "" },
+  { img: waitingRoomImg, alt: "Sala de Espera", tag: "Recepção", tagColor: "#E02020", desc: "Ambiente confortável e acolhedor para os nossos pacientes" },
+  { img: officeImg, alt: "Consultório Médico", tag: "Consultas", tagColor: "#1BAFD6", desc: "Consultórios equipados com tecnologia de ponta para diagnóstico preciso" },
+  { img: exteriorImg, alt: "Exterior da Clínica", tag: "Localização", tagColor: "#E02020", desc: "Localizado no Bairro Muatala, de fácil acesso em Nampula" },
+];
 
 const highlights = [
   "Atendimento Humanizado",
@@ -10,6 +24,17 @@ const highlights = [
 ];
 
 export function Hero() {
+  const [current, setCurrent] = useState(0);
+
+  const next = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % slides.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, [next]);
+
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -17,13 +42,32 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background Slider */}
       <div className="absolute inset-0">
-        <img
-          src={clinicImg}
-          alt="Centro Médico Camuazu"
-          className="w-full h-full object-cover object-center"
-        />
+        {slides.map((slide, i) => (
+          <div
+            key={slide.img}
+            className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+            style={{ opacity: i === current ? 1 : 0 }}
+          >
+            <img
+              src={slide.img}
+              alt={slide.alt}
+              className="w-full h-full object-cover object-center"
+            />
+            <div
+              className="absolute top-6 left-6 px-3 py-1.5 rounded-full text-xs text-white font-medium"
+              style={{ backgroundColor: slide.tagColor }}
+            >
+              {slide.tag}
+            </div>
+            {slide.desc && (
+              <div className="absolute bottom-28 left-6 right-6 max-w-md">
+                <p className="text-white/80 text-sm leading-relaxed">{slide.desc}</p>
+              </div>
+            )}
+          </div>
+        ))}
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#03224C]/90 via-[#03224C]/75 to-[#1BAFD6]/30" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#03224C]/60 via-transparent to-transparent" />
@@ -99,6 +143,20 @@ export function Hero() {
             </button>
           </motion.div>
         </div>
+      </div>
+
+      {/* Slide Indicators */}
+      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+        {slides.map((slide, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+              i === current ? "bg-[#1BAFD6] w-8" : "bg-white/40 hover:bg-white/60"
+            }`}
+            aria-label={slide.alt}
+          />
+        ))}
       </div>
 
       {/* Bottom Wave */}
