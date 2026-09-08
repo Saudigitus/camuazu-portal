@@ -35,7 +35,7 @@ export function Hero() {
       <div className="absolute bottom-1/4 right-5 w-32 h-32 rounded-full bg-[#1BAFD6]/10 blur-2xl hidden lg:block" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+      <div className="relative z-10 max-w-7xl mx-[8%] px-4 sm:px-6 lg:px-8 pt-20 pb-16">
         <div className="max-w-2xl">
           {/* Badge */}
 
@@ -47,20 +47,20 @@ export function Hero() {
             className="text-white mb-6"
             style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)", fontWeight: 800, lineHeight: 1.15 }}
           >
-            Saúde de{" "}
-            <span className="text-[#1BAFD6]">Qualidade</span>{" "}
-            para Toda a{" "}
+            Cuidamos de{" "}
+            <span className="text-[#1BAFD6]">si</span>{" "}
+            e da sua{" "}
             <span className="text-[#E02020]">Família</span>
           </motion.h1>
 
-          <motion.p
+          {/* <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-white/80 text-lg mb-8 max-w-lg leading-relaxed"
           >
             No Centro Médico Camuazu, oferecemos serviços médicos integrados com tecnologia moderna e atendimento personalizado. Sua saúde é a nossa prioridade.
-          </motion.p>
+          </motion.p> */}
 
           {/* Highlights */}
           <motion.div
@@ -86,14 +86,14 @@ export function Hero() {
           >
             <button
               onClick={() => scrollTo("#contact")}
-              className="flex items-center gap-2 bg-[#E02020] hover:bg-[#c01818] text-white px-8 py-4 rounded-full text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+              className="flex items-center gap-2 bg-[#E02020] hover:bg-[#c01818] text-white px-8 py-4 rounded-md text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
               Marcar Consulta
               <ArrowRight size={16} />
             </button>
             <button
               onClick={() => scrollTo("#services")}
-              className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-full text-sm transition-all duration-200"
+              className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-md text-sm transition-all duration-200"
             >
               Ver Serviços
             </button>
