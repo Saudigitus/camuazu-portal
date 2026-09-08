@@ -6,7 +6,7 @@ import logoImg from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Início", href: "#hero", type: "scroll" },
-  { label: "Sobre Nós", href: "#about", type: "scroll" },
+  { label: "Sobre Nós", href: "/sobre", type: "page" },
   { label: "Serviços", href: "/servicos", type: "page" },
   { label: "Contacto", href: "#contact", type: "scroll" },
 ];
