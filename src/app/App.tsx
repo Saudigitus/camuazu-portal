@@ -12,6 +12,7 @@ import { Timeline } from "./components/Timeline";
 import { Partners } from "./components/Partners";
 import { Team } from "./components/Team";
 import { PageHero } from "./components/PageHero";
+import { Cta } from "./components/Cta";
 import { ContactosPage } from "./pages/ContactosPage";
 
 function HomePage() {
@@ -107,6 +108,7 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
+      <Cta />
       <Footer />
     </div>
   );
