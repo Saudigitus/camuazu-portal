@@ -75,7 +75,7 @@ export function Hero() {
       <div className="absolute bottom-1/4 right-5 w-24 h-24 lg:w-32 lg:h-32 rounded-full bg-[#1BAFD6]/10 blur-2xl hidden md:block" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-[8%] px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+      <div className="relative z-10 max-w-7xl mx-[8%] px-4 sm:px-6 lg:px-8 pt-28 pb-2">
         <div className="max-w-2xl relative" style={{ minHeight: "380px" }}>
           {/* Slide 0 - Original Hero Content */}
           <div
@@ -216,11 +216,11 @@ export function Hero() {
       </div>
 
       {/* Bottom Wave */}
-      <div className="absolute bottom-0 left-0 right-0">
+      {/* <div className="absolute bottom-0 left-0 right-0">
         <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
           <path d="M0 80L1440 80L1440 30C1200 70 960 10 720 40C480 70 240 0 0 30L0 80Z" fill="white" />
         </svg>
-      </div>
+      </div> */}
     </section>
   );
 }
