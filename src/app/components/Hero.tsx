@@ -87,7 +87,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-6"
+              className="mb-2"
             >
               <span className="text-[#1BAFD6] text-lg sm:text-xl md:text-xl font-bold tracking-tight uppercase">
                 Clínica{" "}Camuazu
@@ -151,7 +151,7 @@ export function Hero() {
               style={{ opacity: current === i + 1 ? 1 : 0, position: current === i + 1 ? "relative" : "absolute", pointerEvents: current === i + 1 ? "auto" : "none", top: 0, left: 0, right: 0 }}
             >
               {/* Logo Text */}
-              <div className="mb-6">
+              <div className="mb-2">
                 <span className="text-[#1BAFD6] text-lg sm:text-xl md:text-xl font-bold tracking-tight uppercase">
                   Clínica{" "}Camuazu
                 </span>
