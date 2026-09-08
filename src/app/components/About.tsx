@@ -4,6 +4,21 @@ import { useRef } from "react";
 import { CheckCircle2, ArrowRight, Calendar, TrendingUp, Users } from "lucide-react";
 //@ts-ignore
 import consultaImg from "@/assets/consulta.png";
+//@ts-ignore
+import internamentoImg from "@/assets/internamento.png";
+//@ts-ignore
+import esperaImg from "@/assets/espera.png";
+//@ts-ignore
+import consultorioImg from "@/assets/consultorio.png";
+//@ts-ignore
+import exteriorImg from "@/assets/exterior.png";
+
+const gallery = [
+  { img: internamentoImg, alt: "Sala de Internamento", span: "col-span-1 row-span-1" },
+  { img: esperaImg, alt: "Sala de Espera", span: "col-span-1 row-span-1" },
+  { img: consultorioImg, alt: "Consultório Médico", span: "col-span-1 row-span-1" },
+  { img: exteriorImg, alt: "Exterior da Clínica", span: "col-span-1 row-span-1" },
+];
 
 const features = [
   "Equipa médica altamente qualificada e especializada",
@@ -24,39 +39,9 @@ export function About() {
   };
 
   return (
-    <section id="about" className="py-24 bg-white overflow-hidden" ref={ref}>
+    <section id="about" className="py-24 bg-gray-50 overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Image Side */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
-            {/* Main image */}
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <img
-                src={consultaImg}
-                alt="Consulta médica"
-                className="w-full h-[520px] object-cover"
-              />
-              {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#03224C]/40 via-transparent to-transparent" />
-            </div>
-
-            {/* Floating badge */}
-            <div className="absolute -bottom-6 -right-6 bg-[#E02020] text-white rounded-2xl p-5 shadow-xl">
-              <div className="text-xs text-white/80 mt-0.5">Desde</div>
-              <div className="text-3xl" style={{ fontWeight: 800 }}>2024</div>
-              <div className="text-xs text-white/80 mt-0.5">ao serviço da comunidade</div>
-            </div>
-
-            {/* Decorative element */}
-            <div className="absolute -top-6 -left-6 w-24 h-24 rounded-2xl bg-[#1BAFD6]/10 -z-10" />
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-[#1BAFD6]/5 -z-10" />
-          </motion.div>
-
           {/* Content Side */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
@@ -69,9 +54,7 @@ export function About() {
             </div> */}
 
             <h2 className="text-gray-900 mb-6" style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 800, lineHeight: 1.2 }}>
-              Dedicados à Sua{" "}
-              <span className="text-[#1BAFD6]">Saúde</span>{" "}
-              e Bem-Estar
+              Sobre nós
             </h2>
 
             <p className="text-gray-500 mb-6 leading-relaxed">
@@ -106,86 +89,47 @@ export function About() {
               <ArrowRight size={16} />
             </button>
           </motion.div>
+
+          {/* Image Side - Gallery */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
+            <div className="grid grid-cols-2 gap-3 rounded-3xl overflow-hidden">
+              {gallery.map((item, i) => (
+                <motion.div
+                  key={item.alt}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+                  className={`relative group overflow-hidden rounded-2xl ${item.span}`}
+                >
+                  <img
+                    src={item.img}
+                    alt={item.alt}
+                    className="w-full h-full object-cover min-h-[140px] transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#03224C]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <span className="text-white text-xs font-medium">{item.alt}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Floating badge */}
+            <div className="absolute -bottom-5 -right-5 bg-[#E02020] text-white rounded-2xl p-4 shadow-xl z-10">
+              <div className="text-[10px] text-white/80">Desde</div>
+              <div className="text-2xl" style={{ fontWeight: 800 }}>2024</div>
+              <div className="text-[10px] text-white/80">ao serviço da comunidade</div>
+            </div>
+
+            {/* Decorative element */}
+            <div className="absolute -top-6 -left-6 w-24 h-24 rounded-2xl bg-[#1BAFD6]/10 -z-10" />
+          </motion.div>
         </div>
-
-        {/* Timeline */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-24"
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-gray-900 mb-3" style={{ fontSize: "clamp(1.4rem, 2.5vw, 2rem)", fontWeight: 800 }}>
-              A Nossa <span className="text-[#1BAFD6]">Jornada</span>
-            </h3>
-            <p className="text-gray-500 max-w-md mx-auto text-sm">
-              Uma historia de dedicacao e crescimento ao servico da comunidade de Nampula.
-            </p>
-          </div>
-
-          <div className="relative max-w-3xl mx-auto">
-            {/* Vertical line */}
-            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#1BAFD6] via-[#1BAFD6]/50 to-[#E02020] -translate-x-1/2" />
-
-            {/* Milestone 1 */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="relative flex items-start gap-6 mb-12 md:justify-center"
-            >
-              <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-full bg-[#1BAFD6] shadow-lg shadow-[#1BAFD6]/30 shrink-0">
-                <Calendar size={20} className="text-white" />
-              </div>
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 md:w-80 md:text-right">
-                <div className="text-[#1BAFD6] text-xs font-bold uppercase tracking-wider mb-1">Novembro 2024</div>
-                <h4 className="text-gray-900 font-bold text-lg mb-2">Inicio das Actividades</h4>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  O Centro Medico Camuazu abriu as suas portas no Bairro Muatala, em Nampula, com a missao de oferecer cuidados de saude acessiveis e de qualidade.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Milestone 2 */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="relative flex items-start gap-6 mb-12 md:justify-center md:flex-row-reverse"
-            >
-              <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-full bg-[#1BAFD6] shadow-lg shadow-[#1BAFD6]/30 shrink-0">
-                <TrendingUp size={20} className="text-white" />
-              </div>
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 md:w-80">
-                <div className="text-[#1BAFD6] text-xs font-bold uppercase tracking-wider mb-1">18 Meses</div>
-                <h4 className="text-gray-900 font-bold text-lg mb-2">Crescimento Continuo</h4>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  Expansao dos servicos clinicos, consolidacao da confianca da comunidade e incorporacao de novas especialidades medicas.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Milestone 3 */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 1.0 }}
-              className="relative flex items-start gap-6 md:justify-center"
-            >
-              <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-full bg-[#E02020] shadow-lg shadow-[#E02020]/30 shrink-0">
-                <Users size={20} className="text-white" />
-              </div>
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 md:w-80 md:text-right">
-                <div className="text-[#E02020] text-xs font-bold uppercase tracking-wider mb-1">Hoje</div>
-                <h4 className="text-gray-900 font-bold text-lg mb-2">300+ Pacientes Atendidos</h4>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  Mais de 300 pacientes confiam no Camuazu para o seu cuidado diario, num servico em constante melhoria.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

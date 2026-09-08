@@ -125,7 +125,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="flex flex-wrap gap-3 sm:gap-4"
+              className="flex flex-wrap justify-center gap-3 sm:gap-4"
             >
               <button
                 onClick={() => scrollTo("#contact")}
@@ -168,7 +168,7 @@ export function Hero() {
                 {slide.desc}
               </p>
 
-              <div className="flex flex-wrap gap-3 sm:gap-4">
+              <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
                 <button
                   onClick={() => scrollTo("#contact")}
                   className="flex items-center gap-2 bg-[#E02020] hover:bg-[#c01818] text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
@@ -188,30 +188,21 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Slide Indicators */}
+      {/* Slide Controls */}
       <div className="absolute bottom-24 right-8 sm:right-12 lg:right-16 z-10 flex items-center gap-3">
         <button
           onClick={prev}
-          className="flex items-center justify-center w-9 h-9 rounded-lg cursor-pointer border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200"
+          className="flex items-center justify-center w-10 h-10 rounded-lg cursor-pointer border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200"
           aria-label="Slide anterior"
         >
-          <ChevronLeft size={18} />
+          <ChevronLeft size={20} />
         </button>
-        {slides.map((slide, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            className={`h-1 rounded-full transition-all cursor-pointer duration-300 ${i === current ? "bg-[#1BAFD6] w-10" : "bg-white/30 hover:bg-white/50 w-6"
-              }`}
-            aria-label={slide.alt}
-          />
-        ))}
         <button
           onClick={next}
-          className="flex items-center justify-center w-9 h-9 rounded-lg cursor-pointer border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200"
+          className="flex items-center justify-center w-10 h-10 rounded-lg cursor-pointer border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200"
           aria-label="Proximo slide"
         >
-          <ChevronRight size={18} />
+          <ChevronRight size={20} />
         </button>
       </div>
 
