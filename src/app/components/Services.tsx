@@ -14,6 +14,7 @@ const services = [
     desc: "Consultas em diversas especialidades com diagnóstico, tratamento e acompanhamento personalizado.",
     color: "#1BAFD6",
     items: ["Medicina Geral", "Pediatria", "Ginecologia", "Cardiologia", "Neurologia", "Oncologia"],
+    img: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&h=400&fit=crop&q=80",
   },
   {
     icon: TestTube2,
@@ -21,6 +22,7 @@ const services = [
     desc: "Exames laboratoriais com equipamentos modernos e resultados fiáveis.",
     color: "#E02020",
     items: ["Hematologia", "Bioquímica", "Imunologia", "Microbiologia", "Hormonas", "Carga Viral"],
+    img: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=600&h=400&fit=crop&q=80",
   },
   {
     icon: Scan,
@@ -28,6 +30,7 @@ const services = [
     desc: "Exames complementares que apoiam o diagnóstico médico com rapidez e precisão.",
     color: "#1BAFD6",
     items: ["Ecografia", "Raio X", "Mamografia", "TAC", "ECG", "Espirometria"],
+    img: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=600&h=400&fit=crop&q=80",
   },
   {
     icon: ShieldCheck,
@@ -35,6 +38,7 @@ const services = [
     desc: "Serviços de saúde para empresas, promovendo ambientes de trabalho seguros.",
     color: "#E02020",
     items: ["Exames de Admissão", "Exames Periódicos", "Avaliação de Aptidão", "Formação"],
+    img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop&q=80",
   },
   {
     icon: Syringe,
@@ -42,6 +46,7 @@ const services = [
     desc: "Procedimentos médicos e pequenas cirurgias em ambiente seguro e controlado.",
     color: "#1BAFD6",
     items: ["Curativos", "Suturas", "Biópsias", "Cirurgia", "Nebulização", "Partos"],
+    img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop&q=80",
   },
   {
     icon: Ambulance,
@@ -49,6 +54,7 @@ const services = [
     desc: "Atendimento imediato para situações clínicas urgentes com avaliação rápida.",
     color: "#E02020",
     items: ["Atendimento Médico", "Observação Clínica", "Estabilização", "Referência Hospitalar"],
+    img: "https://images.unsplash.com/photo-1587745416910-8d3a3e0e3f54?w=800&h=600&fit=crop&q=80",
   },
   {
     icon: BedDouble,
@@ -56,6 +62,7 @@ const services = [
     desc: "Internamento para doentes que necessitam de vigilância clínica e tratamento contínuo.",
     color: "#1BAFD6",
     items: ["Monitorização Clínica", "Terapêutica", "Cuidados de Enfermagem", "Observação Médica"],
+    img: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&h=600&fit=crop&q=80",
   },
   {
     icon: Home,
@@ -63,6 +70,7 @@ const services = [
     desc: "Cuidados de saúde levados até à casa dos pacientes com conforto e segurança.",
     color: "#E02020",
     items: ["Consultas ao Domicílio", "Cuidados de Enfermagem", "Colheitas", "Cuidados Pós-Operatórios"],
+    img: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=800&h=600&fit=crop&q=80",
   },
   {
     icon: Eye,
@@ -70,6 +78,7 @@ const services = [
     desc: "Soluções completas para a saúde visual com consultas e produtos de qualidade.",
     color: "#1BAFD6",
     items: ["Optometria", "Armações", "Lentes Oftálmicas", "Óculos de Sol"],
+    img: "https://images.unsplash.com/photo-1576210117723-cd06449a467d?w=800&h=600&fit=crop&q=80",
   },
   {
     icon: Pill,
@@ -77,6 +86,7 @@ const services = [
     desc: "Acesso rápido e seguro aos medicamentos prescritos e produtos de saúde.",
     color: "#E02020",
     items: ["Medicamentos", "Material Médico", "Vitaminas", "Dispositivos Médicos"],
+    img: "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=600&h=400&fit=crop&q=80",
   },
   {
     icon: HeartPulse,
@@ -84,20 +94,68 @@ const services = [
     desc: "Check-ups e rastreios para prevenção e promoção da saúde.",
     color: "#1BAFD6",
     items: ["Check-up Executivo", "Check-up Feminino", "Check-up Masculino", "Rastreios"],
+    img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&q=80",
   },
 ];
 
 const CARD_WIDTH = 296;
 
 function ServiceCard({ service, i, inView, mode }: { service: typeof services[0]; i: number; inView: boolean; mode: "carousel" | "grid" }) {
+  if (mode === "carousel") {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5, delay: i * 0.06 }}
+        className="group relative shrink-0 w-[260px] sm:w-[280px] h-[360px] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
+      >
+        {/* Background Image */}
+        <img
+          src={service.img}
+          alt={service.title}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          loading="lazy"
+        />
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#03224C]/95 via-[#03224C]/60 to-[#03224C]/20" />
+
+        {/* Content */}
+        <div className="absolute inset-0 p-6 flex flex-col justify-end">
+          <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-110 shadow-lg">
+            <service.icon size={22} style={{ color: service.color }} />
+          </div>
+          <h3 className="text-white mb-2" style={{ fontSize: "1.05rem", fontWeight: 700 }}>
+            {service.title}
+          </h3>
+          <p className="text-white/80 text-xs leading-relaxed mb-3 line-clamp-2">{service.desc}</p>
+
+          <div className="flex flex-wrap gap-1.5">
+            {service.items.slice(0, 3).map((item) => (
+              <span
+                key={item}
+                className="text-[10px] px-2 py-0.5 rounded-full font-medium bg-white/20 text-white"
+              >
+                {item}
+              </span>
+            ))}
+            {service.items.length > 3 && (
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-white/70 font-medium">
+                +{service.items.length - 3}
+              </span>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: i * 0.06 }}
-      className={`group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-gray-100 hover:border-transparent transition-all duration-300 hover:-translate-y-1.5 cursor-pointer ${
-        mode === "carousel" ? "shrink-0 w-[260px] sm:w-[280px]" : ""
-      }`}
+      className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-gray-100 hover:border-transparent transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
     >
       <div
         className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
