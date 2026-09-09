@@ -100,7 +100,7 @@ export function Timeline() {
                 src={consultaImg}
                 alt="Consulta médica"
                 loading="lazy"
-                className="w-full h-[520px] object-cover"
+                className="w-full h-[300px] md:h-[420px] lg:h-[520px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#03224C]/40 via-transparent to-transparent" />
             </div>

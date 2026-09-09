@@ -53,7 +53,7 @@ export function About() {
 
                 const cardStyle =
                   i === 0
-                    ? { minHeight: "320px" }
+                    ? { minHeight: "350px" }
                     : i === 2
                     ? { minHeight: "100%" }
                     : { height: "155px", minHeight: "155px" };

@@ -23,14 +23,14 @@ export function Cta() {
           <div className="flex flex-col sm:flex-row gap-4 shrink-0">
             <button
               onClick={() => navigate("/contactos")}
-              className="flex items-center justify-center gap-2 bg-[#E02020] hover:bg-[#c01818] text-white px-8 py-4 rounded-md text-sm font-semibold transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+              className="flex items-center justify-center gap-2 bg-[#E02020] hover:bg-[#c01818] text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-sm font-semibold transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
               Marcar Consulta
               <ArrowRight size={16} />
             </button>
             <a
               href="tel:849823400"
-              className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white px-8 py-4 rounded-md text-sm font-semibold transition-all duration-200"
+              className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-sm font-semibold transition-all duration-200"
             >
               <Phone size={16} />
               Ligar Agora

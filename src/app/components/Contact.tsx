@@ -78,7 +78,7 @@ export function Contact() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex items-start gap-4 p-5 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors"
+                className="flex items-start gap-4 p-4 sm:p-5 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors"
               >
                 <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
@@ -122,7 +122,7 @@ export function Contact() {
             initial={{ opacity: 0, x: 40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="bg-[#03224C] rounded-3xl p-8 shadow-2xl"
+            className="bg-[#03224C] rounded-3xl p-6 sm:p-8 shadow-2xl"
           >
             <h3 className="text-white mb-6" style={{ fontWeight: 700, fontSize: "1.3rem" }}>
               Formulário de Marcação

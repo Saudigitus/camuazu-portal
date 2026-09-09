@@ -87,7 +87,7 @@ const services = [
   },
 ];
 
-const CARD_WIDTH = 296;
+const CARD_WIDTH = 276;
 
 function ServiceCard({ service, i, inView, mode }: { service: typeof services[0]; i: number; inView: boolean; mode: "carousel" | "grid" }) {
   return (
@@ -96,7 +96,7 @@ function ServiceCard({ service, i, inView, mode }: { service: typeof services[0]
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: i * 0.06 }}
       className={`group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl border border-gray-100 hover:border-transparent transition-all duration-300 hover:-translate-y-1.5 cursor-pointer ${
-        mode === "carousel" ? "shrink-0 w-[280px]" : ""
+        mode === "carousel" ? "shrink-0 w-[260px] sm:w-[280px]" : ""
       }`}
     >
       <div
@@ -202,9 +202,9 @@ export function Services({ layout = "grid" }: { layout?: "carousel" | "grid" }) 
                       key="ver-mais"
                       initial={{ opacity: 0, y: 30 }}
                       animate={inView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.3, delay: services.length * 0.06 }}
+                      transition={{ duration: 0.2, delay: services.length }}
                       onClick={() => navigate("/servicos")}
-                      className="group bg-[#03224C] rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 cursor-pointer shrink-0 w-[280px] flex flex-col items-center justify-center text-center"
+                      className="group bg-[#03224C] rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 cursor-pointer shrink-0 w-[260px] sm:w-[280px] flex flex-col items-center justify-center text-center"
                     >
                       <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:bg-white/20">
                         <ArrowRight size={24} className="text-[#1BAFD6]" />

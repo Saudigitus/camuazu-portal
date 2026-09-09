@@ -30,7 +30,7 @@ export function Stats() {
               tabIndex={0}
               onClick={() => stat.link.startsWith("/") ? navigate(stat.link) : scrollTo(stat.link)}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") stat.link.startsWith("/") ? navigate(stat.link) : scrollTo(stat.link); }}
-              className={`group py-10 pl-8 pr-6 md:pl-10 cursor-pointer transition-colors duration-300 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1BAFD6]/30 ${
+              className={`group py-8 sm:py-10 pl-5 pr-4 sm:pl-8 sm:pr-6 md:pl-10 cursor-pointer transition-colors duration-300 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1BAFD6]/30 ${
                 i < stats.length - 1 ? "md:border-r border-gray-200" : ""
               }`}
             >

@@ -97,7 +97,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[95vh] flex items-center overflow-hidden select-none"
+      className="relative min-h-screen flex items-center overflow-hidden select-none"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -138,7 +138,7 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-20 max-w-7xl mx-[8%] px-4 sm:px-6 lg:px-8 pt-28 pb-2 pointer-events-none">
-        <div className="max-w-2xl relative" style={{ minHeight: "380px" }}>
+        <div className="max-w-2xl relative" style={{ minHeight: "clamp(280px, 50vh, 380px)" }}>
           {/* Slide 0 - Hero Content */}
           <div
             className="transition-opacity duration-1000 ease-in-out"
