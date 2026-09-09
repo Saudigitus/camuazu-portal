@@ -38,7 +38,7 @@ export function Testimonials() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-24 bg-gradient-to-b from-[#F0F8FF] to-white" ref={ref}>
+    <section className="pt-24 bg-gradient-to-b from-[#F0F8FF] to-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -52,37 +52,46 @@ export function Testimonials() {
             <span className="text-[#1BAFD6]">Utentes</span>
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed">
-            A confiança dos nossos utentes é o reflexo da qualidade dos cuidados que prestamos. Desde a abertura em Novembro de 2024, trabalhamos diariamente para proporcionar um atendimento humanizado, seguro e de excelência.
+            A confiança dos nossos utentes é o reflexo da qualidade dos cuidados que prestamos. Trabalhamos para proporcionar um atendimento humanizado, seguro e de excelência.
           </p>
         </motion.div>
 
         {/* Indicators */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {indicators.map((ind, i) => (
-            <motion.div
-              key={ind.label}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white rounded-2xl p-8 shadow-md border border-gray-100 text-center"
-            >
-              <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4"
-                style={{ backgroundColor: `${ind.color}12` }}
-              >
-                <ind.icon size={24} style={{ color: ind.color }} />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="bg-white rounded-2xl p-8 md:p-10 shadow-md border border-gray-100 mb-16"
+        >
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-0">
+            {indicators.map((ind, i) => (
+              <div key={ind.label} className="flex items-center gap-8 md:gap-10">
+                {/* Indicator */}
+                <div className="text-center">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3"
+                    style={{ backgroundColor: `${ind.color}12` }}
+                  >
+                    <ind.icon size={20} style={{ color: ind.color }} />
+                  </div>
+                  <div className="text-3xl md:text-4xl font-bold mb-1" style={{ color: ind.color }}>
+                    {ind.value}
+                  </div>
+                  <div className="text-gray-900 font-semibold text-sm mb-1">{ind.label}</div>
+                  <p className="text-gray-400 text-xs">{ind.desc}</p>
+                </div>
+
+                {/* Vertical Line */}
+                {i < indicators.length - 1 && (
+                  <div className="hidden md:block w-px h-20 bg-gray-200" />
+                )}
               </div>
-              <div className="text-4xl font-bold mb-1" style={{ color: ind.color }}>
-                {ind.value}
-              </div>
-              <div className="text-gray-900 font-semibold text-sm mb-1">{ind.label}</div>
-              <p className="text-gray-400 text-xs">{ind.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* Improvement message */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -91,10 +100,10 @@ export function Testimonials() {
           <p className="text-gray-600 leading-relaxed italic">
             "A opinião dos nossos utentes orienta a melhoria contínua dos nossos serviços. Cada elogio reforça o nosso compromisso e cada sugestão representa uma oportunidade para evoluirmos, garantindo cuidados de saúde cada vez mais seguros, humanizados e de qualidade."
           </p>
-        </motion.div>
+        </motion.div> */}
 
         {/* Testimonials Grid */}
-        <div className="w-full md:w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        {/* <div className="w-full md:w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
@@ -133,7 +142,7 @@ export function Testimonials() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );
