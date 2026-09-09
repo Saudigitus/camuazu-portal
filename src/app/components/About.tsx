@@ -122,7 +122,7 @@ export function About() {
 
             <button
               onClick={() => navigate("/sobre")}
-              className="flex items-center gap-2 bg-[#1BAFD6] hover:bg-[#0d9bbf] text-white px-8 py-4 rounded-md text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+              className="flex items-center gap-2 cursor-pointer bg-[#1BAFD6] hover:bg-[#0d9bbf] text-white px-8 py-4 rounded-md text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
               Saber Mais
               <ArrowRight size={16} />

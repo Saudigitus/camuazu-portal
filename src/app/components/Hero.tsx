@@ -22,7 +22,7 @@ const highlights = [
   "Equipa Especializada",
 ];
 
-const INTERVAL = 7000;
+const INTERVAL = 5000;
 const SWIPE_THRESHOLD = 50;
 
 export function Hero() {
@@ -190,14 +190,14 @@ export function Hero() {
             >
               <button
                 onClick={() => navigate("/contactos")}
-                className="flex items-center gap-2 bg-[#E02020] hover:bg-[#c01818] text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                className="flex items-center gap-2 cursor-pointer bg-[#E02020] hover:bg-[#c01818] text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
               >
                 Marcar Consulta
                 <ArrowRight size={16} />
               </button>
               <button
                 onClick={() => scrollTo("#services")}
-                className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-sm transition-all duration-200"
+                className="flex items-center gap-2 cursor-pointer bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-sm transition-all duration-200"
               >
                 Ver Serviços
               </button>
@@ -231,14 +231,14 @@ export function Hero() {
               <div className="flex flex-wrap gap-3 sm:gap-4">
                 <button
                   onClick={() => navigate("/contactos")}
-                  className="flex items-center gap-2 bg-[#E02020] hover:bg-[#c01818] text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                  className="flex items-center gap-2 cursor-pointer bg-[#E02020] hover:bg-[#c01818] text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                 >
                   Marcar Consulta
                   <ArrowRight size={16} />
                 </button>
                 <button
                   onClick={() => scrollTo("#services")}
-                  className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-sm transition-all duration-200"
+                  className="flex items-center gap-2 cursor-pointer bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-sm transition-all duration-200"
                 >
                   Ver Serviços
                 </button>

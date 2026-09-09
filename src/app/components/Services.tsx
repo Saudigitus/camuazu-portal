@@ -4,7 +4,7 @@ import { useRef, useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router";
 import {
   Stethoscope, TestTube2, Scan, ShieldCheck, Syringe,
-  Ambulance, BedDouble, Home, Eye, Pill, HeartPulse, ArrowRight
+  Ambulance, BedDouble, Home, Eye, Pill, HeartPulse, ArrowRight, ChevronLeft, ChevronRight
 } from "lucide-react";
 
 const services = [
@@ -87,7 +87,7 @@ const services = [
   },
 ];
 
-const CARD_WIDTH = 276;
+const CARD_WIDTH = 296;
 
 function ServiceCard({ service, i, inView, mode }: { service: typeof services[0]; i: number; inView: boolean; mode: "carousel" | "grid" }) {
   return (
@@ -144,28 +144,37 @@ export function Services({ layout = "grid" }: { layout?: "carousel" | "grid" }) 
 
   const allItems = [...services, null];
 
-  const scroll = useCallback(() => {
+  const scrollBy = useCallback((dir: number) => {
     const el = scrollRef.current;
-    if (!el || paused) return;
+    if (!el) return;
+    el.scrollBy({ left: dir * CARD_WIDTH, behavior: "smooth" });
+  }, []);
 
-    const maxScroll = el.scrollWidth - el.clientWidth;
+  const scrollToStart = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollTo({ left: 0, behavior: "smooth" });
+  }, []);
 
-    if (el.scrollLeft >= maxScroll - 1) {
-      el.scrollTo({ left: 0, behavior: "smooth" });
-    } else {
-      el.scrollBy({ left: CARD_WIDTH, behavior: "smooth" });
-    }
-  }, [paused]);
-
+  // Auto-scroll
   useEffect(() => {
-    if (layout !== "carousel") return;
-    const interval = setInterval(scroll, 3000);
+    if (layout !== "carousel" || paused) return;
+    const interval = setInterval(() => {
+      const el = scrollRef.current;
+      if (!el) return;
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      if (el.scrollLeft >= maxScroll - 10) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: CARD_WIDTH, behavior: "smooth" });
+      }
+    }, 3000);
     return () => clearInterval(interval);
-  }, [scroll, layout]);
+  }, [paused, layout]);
 
   return (
-    <section id="services" className="py-24 bg-gradient-to-b from-[#F8FBFF] to-white" ref={ref}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-24 bg-white" ref={ref}>
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -173,10 +182,6 @@ export function Services({ layout = "grid" }: { layout?: "carousel" | "grid" }) 
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 bg-[#1BAFD6]/10 text-[#1BAFD6] px-4 py-2 rounded-full text-sm mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#1BAFD6]" />
-            Os Nossos Serviços
-          </div>
           <h2 className="text-gray-900 mb-4" style={{ fontSize: "clamp(1.8rem, 3vw, 2.8rem)", fontWeight: 800, lineHeight: 1.2 }}>
             Cuidados Médicos{" "}
             <span className="text-[#1BAFD6]">Completos</span>
@@ -188,38 +193,60 @@ export function Services({ layout = "grid" }: { layout?: "carousel" | "grid" }) 
 
         {/* Carousel */}
         {layout === "carousel" && (
-          <div
-            ref={scrollRef}
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
-            className="overflow-hidden -mx-4 px-4 py-3"
-          >
-            <div className="flex gap-5 w-max">
-              {allItems.map((item, i) => {
-                if (!item) {
-                  return (
-                    <motion.div
-                      key="ver-mais"
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={inView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.2, delay: services.length }}
-                      onClick={() => navigate("/servicos")}
-                      className="group bg-[#03224C] rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 cursor-pointer shrink-0 w-[260px] sm:w-[280px] flex flex-col items-center justify-center text-center"
-                    >
-                      <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:bg-white/20">
-                        <ArrowRight size={24} className="text-[#1BAFD6]" />
-                      </div>
-                      <h3 className="text-white mb-2" style={{ fontSize: "1.1rem", fontWeight: 700 }}>
-                        Ver Todos os Serviços
-                      </h3>
-                      <p className="text-white/50 text-xs leading-relaxed">
-                        Explore todas as nossas especialidades e complete a lista de serviços.
-                      </p>
-                    </motion.div>
-                  );
-                }
-                return <ServiceCard key={item.title} service={item} i={i} inView={inView} mode="carousel" />;
-              })}
+          <div className="relative">
+            {/* Left Arrow */}
+            <button
+              onClick={() => scrollBy(-1)}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-10 w-10 h-10 rounded-md bg-white shadow-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:text-[#1BAFD6] hover:border-[#1BAFD6] transition-all duration-200 hidden sm:flex"
+              aria-label="Slide anterior"
+            >
+              <ChevronLeft size={20} />
+            </button>
+
+            {/* Right Arrow */}
+            <button
+              onClick={() => scrollBy(1)}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-10 w-10 h-10 rounded-md bg-white shadow-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:text-[#1BAFD6] hover:border-[#1BAFD6] transition-all duration-200 hidden sm:flex"
+              aria-label="Próximo slide"
+            >
+              <ChevronRight size={20} />
+            </button>
+
+            {/* Scrollable Track */}
+            <div
+              ref={scrollRef}
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+              className="overflow-x-auto overflow-y-hidden mx-6 sm:mx-8 scrollbar-hide"
+              style={{ scrollBehavior: "smooth", scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              <div className="flex gap-5 w-max py-2">
+                {allItems.map((item, i) => {
+                  if (!item) {
+                    return (
+                      <motion.div
+                        key="ver-mais"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={inView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.2, delay: services.length * 0.06 }}
+                        onClick={() => navigate("/servicos")}
+                        className="group bg-[#03224C] rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 cursor-pointer shrink-0 w-[260px] sm:w-[280px] flex flex-col items-center justify-center text-center"
+                      >
+                        <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:bg-white/20">
+                          <ArrowRight size={24} className="text-[#1BAFD6]" />
+                        </div>
+                        <h3 className="text-white mb-2" style={{ fontSize: "1.1rem", fontWeight: 700 }}>
+                          Ver Todos os Serviços
+                        </h3>
+                        <p className="text-white/50 text-xs leading-relaxed">
+                          Explore todas as nossas especialidades e complete a lista de serviços.
+                        </p>
+                      </motion.div>
+                    );
+                  }
+                  return <ServiceCard key={item.title} service={item} i={i} inView={inView} mode="carousel" />;
+                })}
+              </div>
             </div>
           </div>
         )}

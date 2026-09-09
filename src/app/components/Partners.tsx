@@ -30,10 +30,6 @@ export function Partners() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <div className="inline-flex items-center gap-2 bg-[#1BAFD6]/10 text-[#1BAFD6] px-4 py-2 rounded-full text-sm mb-4">
-            <Shield size={14} />
-            Parceiros de Confiança
-          </div>
           <h2 className="text-gray-900 mb-4" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 800, lineHeight: 1.2 }}>
             Seguradoras e{" "}
             <span className="text-[#1BAFD6]">Parceiros</span>

@@ -11,7 +11,7 @@ interface PageHeroProps {
 
 export function PageHero({ title, highlight, description, bg, children }: PageHeroProps) {
   return (
-    <section className="relative py-36 bg-[#03224C] overflow-hidden">
+    <section className="relative py-44 md:py-52 bg-[#03224C] overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-full h-full" style={{
@@ -29,17 +29,6 @@ export function PageHero({ title, highlight, description, bg, children }: PageHe
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <div className="max-w-2xl">
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white/80 px-4 py-2 rounded-full text-sm mb-6 border border-white/10"
-            >
-              <span className="w-2 h-2 rounded-full bg-[#1BAFD6] animate-pulse" />
-              Centro Médico Camuazu
-            </motion.div>
-
             {/* Title */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
