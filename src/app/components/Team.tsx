@@ -68,10 +68,6 @@ export function Team() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 bg-[#E02020]/10 text-[#E02020] px-4 py-2 rounded-full text-sm mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E02020]" />
-            Equipa Médica
-          </div>
           <h2 className="text-gray-900 mb-4" style={{ fontSize: "clamp(1.8rem, 3vw, 2.8rem)", fontWeight: 800, lineHeight: 1.2 }}>
             Profissionais{" "}
             <span className="text-[#E02020]">Qualificados</span>

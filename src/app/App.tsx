@@ -80,8 +80,9 @@ function ServicosPage() {
         </div>
       </PageHero>
       <Services />
-      <Team />
-      <Partners />
+      <div className="bg-gradient-to-b from-white to-gray-50">
+        <Team />
+      </div>
     </>
   );
 }
