@@ -15,6 +15,7 @@ import { PageHero } from "./components/PageHero";
 import { Cta } from "./components/Cta";
 import { WhatsAppButton } from "./components/WhatsAppButton";
 import { ContactosPage } from "./pages/ContactosPage";
+import { Reability } from "./components/Reability"
 
 function HomePage() {
   return (
@@ -25,7 +26,7 @@ function HomePage() {
       <Services layout="carousel" />
       <WhyUs />
       <Partners />
-      <Testimonials />
+      <Reability />
     </>
   );
 }
@@ -57,8 +58,7 @@ function SobrePage() {
       </PageHero>
       <About />
       <Timeline />
-      <Team />
-      <Partners />
+      <Testimonials/>
     </>
   );
 }

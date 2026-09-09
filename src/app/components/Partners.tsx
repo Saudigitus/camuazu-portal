@@ -47,7 +47,7 @@ export function Partners() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group flex flex-col items-center justify-center bg-white rounded-2xl p-6 border border-gray-100 hover:border-transparent hover:shadow-lg transition-all duration-300 cursor-default"
+              className="group flex flex-col items-center justify-center bg-white rounded-xl p-6 border border-gray-100 hover:border-transparent hover:shadow-lg transition-all duration-300 cursor-default"
             >
               {partner.img ? (
                 <div className="w-20 h-14 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">

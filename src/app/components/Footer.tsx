@@ -117,8 +117,8 @@ export function Footer() {
                   <Clock size={14} className="text-[#E02020]" />
                 </div>
                 <div className="text-white/70 text-sm">
-                  Seg–Sáb: 07h – 20h<br />
-                  <span className="text-white/40">Dom/Feriados: 08h – 14h</span>
+                  Todos os dias: 08h – 20h<br />
+                  <span className="text-white/40">Incluindo domingos e feriados</span>
                 </div>
               </div>
             </div>

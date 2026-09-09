@@ -8,7 +8,7 @@ import { scrollTo } from "@/utils";
 const stats = [
   { icon: Users, value: "300+", label: "Pacientes Atendidos", color: "#1BAFD6", desc: "A comunidade confia no nosso trabalho", link: "#about" },
   { icon: Award, value: "10+", label: "Especialidades Médicas", color: "#E02020", desc: "Cobertura completa para a sua saúde", link: "#services" },
-  { icon: Clock, value: "Seg–Sáb 7h–20h", label: "Domingos e Feriados: 8h–14h", color: "#1BAFD6", desc: "Sempre disponível quando precisa", link: "/contactos" },
+  { icon: Clock, value: "8h – 20h", label: "Todos os dias", color: "#1BAFD6", desc: "Incluindo domingos e feriados", link: "/contactos" },
 ];
 
 export function Stats() {

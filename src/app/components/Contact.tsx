@@ -27,7 +27,7 @@ const contactInfo = [
   {
     icon: Clock,
     label: "Horário",
-    value: "Segunda a Sábado: 07h – 20h\nDomingo e Feriados: 08h – 14h",
+    value: "Todos os dias: 08h – 20h\nIncluindo domingos e feriados",
     color: "#E02020",
   },
 ];

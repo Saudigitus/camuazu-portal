@@ -9,7 +9,7 @@ export function Timeline() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="timeline" className="py-24 bg-white overflow-hidden" ref={ref}>
+    <section id="timeline" className="pb-24 bg-white overflow-hidden" ref={ref}>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Timeline */}

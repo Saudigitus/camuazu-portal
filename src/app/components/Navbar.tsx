@@ -6,8 +6,8 @@ import logoImg from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Início", href: "/", type: "page" },
-  { label: "Sobre Nós", href: "/sobre", type: "page" },
   { label: "Serviços", href: "/servicos", type: "page" },
+  { label: "Sobre Nós", href: "/sobre", type: "page" },
   { label: "Contacto", href: "/contactos", type: "page" },
 ];
 
@@ -57,14 +57,14 @@ export function Navbar() {
           {/* Logo */}
           <button
             onClick={() => handleNav("/", "page")}
-            className="flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-[#1BAFD6]/30 rounded-lg cursor-pointer"
+            className="flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-[#1BAFD6]/30 rounded-lg cursor-pointer shrink-0"
             aria-label="Ir para o início"
           >
             <img src={logoImg} alt="Centro Médico Camuazu" className="h-14 sm:h-16 md:h-20 w-auto object-contain" />
           </button>
 
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop Links - Centered */}
+          <div className="hidden md:flex items-center justify-center gap-8 flex-1">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.href;
               return (
@@ -80,7 +80,10 @@ export function Navbar() {
                 </button>
               );
             })}
+          </div>
 
+          {/* CTA - Right */}
+          <div className="hidden md:flex shrink-0">
             <button
               onClick={() => navigate("/contactos")}
               className="flex items-center cursor-pointer gap-2 bg-[#E02020] hover:bg-[#c01818] text-white px-5 py-2.5 rounded-md text-sm font-semibold transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
