@@ -13,6 +13,7 @@ import { Partners } from "./components/Partners";
 import { Team } from "./components/Team";
 import { PageHero } from "./components/PageHero";
 import { Cta } from "./components/Cta";
+import { WhatsAppButton } from "./components/WhatsAppButton";
 import { ContactosPage } from "./pages/ContactosPage";
 
 function HomePage() {
@@ -110,6 +111,7 @@ export default function App() {
       </main>
       <Cta />
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }
