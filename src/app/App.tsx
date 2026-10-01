@@ -3,6 +3,7 @@ import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Stats } from "./components/Stats";
 import { Services } from "./components/Services";
+import { ServicesGrid } from "./components/ServicesGrid";
 import { About } from "./components/About";
 import { WhyUs } from "./components/WhyUs";
 import { Testimonials } from "./components/Testimonials";
@@ -79,7 +80,7 @@ function ServicosPage() {
           ))}
         </div>
       </PageHero>
-      <Services />
+      <ServicesGrid />
       <div className="bg-gradient-to-b from-white to-gray-50">
         <Team />
       </div>
