@@ -6,6 +6,7 @@ import {
   Stethoscope, TestTube2, Scan, ShieldCheck, Syringe,
   Ambulance, BedDouble, Home, Eye, Pill, HeartPulse, ArrowRight, ChevronLeft, ChevronRight
 } from "lucide-react";
+import { appointment, cirurgies, imagiology, internament, laboratory, pharmacy, urgencies, domiciliar } from "../assets/services/index"
 
 const services = [
   {
@@ -14,7 +15,7 @@ const services = [
     desc: "Consultas em diversas especialidades com diagnóstico, tratamento e acompanhamento personalizado.",
     color: "#1BAFD6",
     items: ["Medicina Geral", "Pediatria", "Ginecologia", "Cardiologia", "Neurologia", "Oncologia"],
-    img: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&h=400&fit=crop&q=80",
+    img: appointment,
   },
   {
     icon: TestTube2,
@@ -22,7 +23,7 @@ const services = [
     desc: "Exames laboratoriais com equipamentos modernos e resultados fiáveis.",
     color: "#E02020",
     items: ["Hematologia", "Bioquímica", "Imunologia", "Microbiologia", "Hormonas", "Carga Viral"],
-    img: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=600&h=400&fit=crop&q=80",
+    img: laboratory,
   },
   {
     icon: Scan,
@@ -30,7 +31,7 @@ const services = [
     desc: "Exames complementares que apoiam o diagnóstico médico com rapidez e precisão.",
     color: "#1BAFD6",
     items: ["Ecografia", "Raio X", "Mamografia", "TAC", "ECG", "Espirometria"],
-    img: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=600&h=400&fit=crop&q=80",
+    img: imagiology,
   },
   {
     icon: ShieldCheck,
@@ -46,7 +47,7 @@ const services = [
     desc: "Procedimentos médicos e pequenas cirurgias em ambiente seguro e controlado.",
     color: "#1BAFD6",
     items: ["Curativos", "Suturas", "Biópsias", "Cirurgia", "Nebulização", "Partos"],
-    img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop&q=80",
+    img: cirurgies,
   },
   {
     icon: Ambulance,
@@ -54,7 +55,7 @@ const services = [
     desc: "Atendimento imediato para situações clínicas urgentes com avaliação rápida.",
     color: "#E02020",
     items: ["Atendimento Médico", "Observação Clínica", "Estabilização", "Referência Hospitalar"],
-    img: "https://images.unsplash.com/photo-1587745416910-8d3a3e0e3f54?w=800&h=600&fit=crop&q=80",
+    img: urgencies,
   },
   {
     icon: BedDouble,
@@ -62,7 +63,7 @@ const services = [
     desc: "Internamento para doentes que necessitam de vigilância clínica e tratamento contínuo.",
     color: "#1BAFD6",
     items: ["Monitorização Clínica", "Terapêutica", "Cuidados de Enfermagem", "Observação Médica"],
-    img: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&h=600&fit=crop&q=80",
+    img: internament,
   },
   {
     icon: Home,
@@ -70,7 +71,7 @@ const services = [
     desc: "Cuidados de saúde levados até à casa dos pacientes com conforto e segurança.",
     color: "#E02020",
     items: ["Consultas ao Domicílio", "Cuidados de Enfermagem", "Colheitas", "Cuidados Pós-Operatórios"],
-    img: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=800&h=600&fit=crop&q=80",
+    img: domiciliar,
   },
   {
     icon: Eye,
@@ -86,7 +87,7 @@ const services = [
     desc: "Acesso rápido e seguro aos medicamentos prescritos e produtos de saúde.",
     color: "#E02020",
     items: ["Medicamentos", "Material Médico", "Vitaminas", "Dispositivos Médicos"],
-    img: "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=600&h=400&fit=crop&q=80",
+    img: pharmacy,
   },
   {
     icon: HeartPulse,
@@ -241,11 +242,10 @@ export function Services({ layout = "grid" }: { layout?: "carousel" | "grid" }) 
           className="text-center mb-16"
         >
           <h2 className="text-gray-900 mb-4" style={{ fontSize: "clamp(1.8rem, 3vw, 2.8rem)", fontWeight: 800, lineHeight: 1.2 }}>
-            Cuidados Médicos{" "}
-            <span className="text-[#1BAFD6]">Completos</span>
+            Nossos <span className="text-[#1BAFD6]">Serviços</span>
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto">
-            Oferecemos uma oferta integrada de serviços de saúde para indivíduos, famílias e empresas, garantindo qualidade, segurança e atendimento humanizado.
+            Oferecemos serviços de saúde para indivíduos, famílias e empresas com qualidade, segurança e atendimento humanizado.
           </p>
         </motion.div>
 
