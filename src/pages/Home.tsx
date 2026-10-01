@@ -1,11 +1,11 @@
-import { About, Hero, Partners, Reability, Services, Stats, WhyUs } from "@/components";
+import { AboutSection, Hero, Partners, Reability, Services, Stats, WhyUs } from "@/components";
 
 export function Home() {
   return (
     <>
       <Hero />
       <Stats />
-      <About />
+      <AboutSection />
       <Services layout="carousel" />
       <WhyUs />
       <Partners />

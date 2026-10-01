@@ -7,11 +7,12 @@ interface PageHeroProps {
   description: string;
   bg?: string;
   children?: ReactNode;
+  subtitle?: string
 }
 
-export function PageHero({ title, highlight, description, bg, children }: PageHeroProps) {
+export function PageHero({ title, highlight, description, subtitle, bg, children }: PageHeroProps) {
   return (
-    <section className="relative py-44 md:py-52 bg-[#03224C] overflow-hidden">
+    <section className="relative pt-44 pb-40 md:pt-64 md:pb-50 bg-[#03224C] overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-full h-full" style={{
@@ -29,20 +30,33 @@ export function PageHero({ title, highlight, description, bg, children }: PageHe
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <div className="max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-2"
+            >
+              <span className="text-[#1BAFD6] text-md font-bold tracking-tight uppercase">
+                {subtitle}
+              </span>
+            </motion.div>
+
             {/* Title */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-white mb-5"
-              style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)", fontWeight: 800, lineHeight: 1.1 }}
+              style={{ fontSize: "clamp(2.2rem, 3vw, 3.8rem)", fontWeight: 800, lineHeight: 1.1 }}
             >
+
               {title}{" "}
               {highlight && (
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1BAFD6] to-[#1BAFD6]/70">
                   {highlight}
                 </span>
               )}
+              <span className="block w-15 h-1 my-5 rounded-full bg-gradient-to-r from-[#1BAFD6] to-[#1BAFD6]/70" />
             </motion.h1>
 
             {/* Description */}
@@ -50,30 +64,12 @@ export function PageHero({ title, highlight, description, bg, children }: PageHe
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-white/60 text-lg leading-relaxed max-w-xl"
+              className="text-white/60 text-sm leading-relaxed max-w-xl"
             >
               {description}
             </motion.p>
           </div>
-
-          {/* Optional extra content */}
-          {children && (
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-            >
-              {children}
-            </motion.div>
-          )}
         </div>
-      </div>
-
-      {/* Bottom wave */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <path d="M0 80L1440 80L1440 30C1200 65 960 5 720 35C480 65 240 5 0 30L0 80Z" fill="white" />
-        </svg>
       </div>
     </section>
   );

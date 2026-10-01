@@ -3,7 +3,7 @@ export { Hero } from "./Hero";
 export { Stats } from "./Stats";
 export { Services } from "./Services";
 export { ServicesGrid } from "./ServicesGrid";
-export { About } from "./About";
+export { AboutSection } from "./About";
 export { WhyUs } from "./WhyUs";
 export { Testimonials } from "./Testimonials";
 export { Contact } from "./Contact";

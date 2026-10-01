@@ -1,4 +1,4 @@
-export { About } from "./About"
+export { AboutPage } from "./About"
 export { Contacts } from "./Contacts"
 export { Home } from "./Home"
 export { NotFoundPage } from "./NotFound"
