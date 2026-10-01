@@ -95,7 +95,7 @@ export function Navbar() {
 
           {/* Mobile Hamburger */}
           <button
-            className={`md:hidden p-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#1BAFD6]/30 ${
+            className={`md:hidden p-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#1BAFD6]/30 cursor-pointer ${
               "text-gray-700"
             }`}
             onClick={() => setMenuOpen(!menuOpen)}
@@ -125,7 +125,7 @@ export function Navbar() {
                 onClick={() => handleNav(link.href, link.type)}
                 role="menuitem"
                 aria-current={isActive ? "page" : undefined}
-                className={`text-left px-4 py-3 rounded-lg transition-colors text-sm ${
+                className={`text-left px-4 py-3 rounded-lg transition-colors text-sm cursor-pointer ${
                   isActive
                     ? "bg-[#1BAFD6]/10 text-[#1BAFD6] font-semibold"
                     : "text-gray-700 hover:bg-gray-100"

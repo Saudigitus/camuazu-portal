@@ -24,7 +24,7 @@ const features = [
   "Compromisso com a saúde familiar",
 ];
 
-export function About() {
+export function AboutSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const navigate = useNavigate();
@@ -46,17 +46,17 @@ export function About() {
                   i === 0
                     ? "md:col-start-1 md:row-start-1 md:row-span-2"
                     : i === 1
-                    ? "md:col-start-2 md:row-start-1"
-                    : i === 2
-                    ? "md:col-start-2 md:row-start-2 md:row-span-2"
-                    : "md:col-start-1 md:row-start-3";
+                      ? "md:col-start-2 md:row-start-1"
+                      : i === 2
+                        ? "md:col-start-2 md:row-start-2 md:row-span-2"
+                        : "md:col-start-1 md:row-start-3";
 
                 const cardStyle =
                   i === 0
                     ? { minHeight: "350px" }
                     : i === 2
-                    ? { minHeight: "100%" }
-                    : { height: "155px", minHeight: "155px" };
+                      ? { minHeight: "100%" }
+                      : { height: "155px", minHeight: "155px" };
 
                 return (
                   <motion.div

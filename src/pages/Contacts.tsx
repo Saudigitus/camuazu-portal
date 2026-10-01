@@ -1,7 +1,6 @@
-import { PageHero } from "../components/PageHero";
-import { Contact } from "../components/Contact";
+import { Contact, PageHero } from "@/components";
 
-export function ContactosPage() {
+export function Contacts() {
   return (
     <>
       <PageHero
