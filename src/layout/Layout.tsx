@@ -15,7 +15,7 @@ export function Layout(props: LayoutProps) {
             </main>
             <Cta />
             <Footer />
-            <WhatsAppButton />
+            {/* <WhatsAppButton /> */}
         </div>
     );
 }
