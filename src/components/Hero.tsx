@@ -97,7 +97,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden select-none"
+      className="relative pt-45 pb-15 flex items-center overflow-hidden select-none"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -277,7 +277,7 @@ export function Hero() {
       {/* Arrow Left */}
       <button
         onClick={(e) => { e.stopPropagation(); prev(); }}
-        className="absolute left-4 sm:left-6 lg:left-8 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-12 h-12 rounded-md border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200 backdrop-blur-sm pointer-events-auto"
+        className="absolute left-4 sm:left-6 lg:left-8 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-12 h-12 rounded-md border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200 backdrop-blur-sm pointer-events-auto cursor-pointer"
         aria-label="Slide anterior"
       >
         <ChevronLeft size={22} />
@@ -286,7 +286,7 @@ export function Hero() {
       {/* Arrow Right */}
       <button
         onClick={(e) => { e.stopPropagation(); next(); }}
-        className="absolute right-4 sm:right-6 lg:right-8 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-12 h-12 rounded-md border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200 backdrop-blur-sm pointer-events-auto"
+        className="absolute right-4 sm:right-6 lg:right-8 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-12 h-12 rounded-md border border-white/30 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200 backdrop-blur-sm pointer-events-auto cursor-pointer"
         aria-label="Próximo slide"
       >
         <ChevronRight size={22} />
