@@ -118,8 +118,8 @@ export function Hero() {
             />
           </div>
         ))}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#03224C]/95 via-[#03224C]/50 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#03224C]/70 via-[#03224C]/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#03224C]/95 via-[#03224C]/30 to-transparent" />
+        {/* <div className="absolute inset-0 bg-gradient-to-t from-[#03224C]/70 via-[#03224C]/20 to-transparent" /> */}
       </div>
 
       {/* Drag Area */}
@@ -249,12 +249,12 @@ export function Hero() {
       </div>
 
       {/* Progress Bar */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10 z-30">
+      {/* <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10 z-30">
         <div
           className="h-full bg-[#1BAFD6] transition-none"
           style={{ width: `${progress}%` }}
         />
-      </div>
+      </div> */}
 
       {/* Dots */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2" role="tablist" aria-label="Slides">
@@ -265,10 +265,10 @@ export function Hero() {
             role="tab"
             aria-selected={current === i}
             aria-label={`Slide ${i + 1}`}
-            className={`h-2.5 rounded-full transition-all duration-300 ${
+            className={`h-2 rounded-full transition-all duration-300 ${
               current === i
-                ? "bg-[#1BAFD6] w-8"
-                : "bg-white/40 hover:bg-white/60 w-2.5"
+                ? "bg-[#fff] w-6"
+                : "bg-white/40 hover:bg-white/60 w-2"
             }`}
           />
         ))}
