@@ -1,0 +1,5 @@
+export { About } from "./About"
+export { Contacts } from "./Contacts"
+export { Home } from "./Home"
+export { NotFoundPage } from "./NotFound"
+export { Services } from "./Services"
